@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Gnu IceCat
+Comment=A libre fork of Firefox
+Terminal=false
+Exec=icecat %u
+Icon=/usr/local/icecat/browser/icons/mozicon128.png
+Categories=Network;WebBrowser;

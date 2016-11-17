@@ -1,0 +1,8 @@
+#!/bin/sh
+
+compton -b --config ~/.config/compton.conf &
+feh $(python2 /usr/local/bin/xkcd.py) &
+
+eval $(keychain --eval --quiet)
+
+exec awesome
