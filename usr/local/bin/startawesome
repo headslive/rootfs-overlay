@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cp -f /usr/share/heads/awesome.xinit /home/luther/.xinitrc
-chmod +x /home/luther/.xinitrc
+cp -f /usr/share/heads/awesome.xinit $HOME/.xinitrc
+chmod 755 $HOME/.xinitrc
 
-startx -- vt1 -nolisten tcp
+/usr/bin/startx -- vt1 -nolisten tcp

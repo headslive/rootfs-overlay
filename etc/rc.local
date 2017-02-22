@@ -1,0 +1,6 @@
+[ -f /etc/unbound/root.key ] || {
+	#/etc/init.d/unbound stop
+	#unbound-anchor -a /etc/unbound/root.key
+	#/etc/init.d/unbound start
+	return 0;
+}
