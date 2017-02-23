@@ -3698,6 +3698,11 @@ if (( GRMLSMALL_SPECIFIC > 0 )) && isgrmlsmall ; then
 
 fi
 
+alias ls="ls -a --color=auto"
+alias sl="ls"
+alias ll="ls -laH --color=auto"
+alias l="ll"
+
 zrclocal
 
 ## genrefcard.pl settings
