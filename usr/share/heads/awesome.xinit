@@ -3,8 +3,6 @@
 #test -d /dev/dri && compton -b --config ~/.config/compton.conf &
 #feh $(xkcd) &
 
-feh --no-fehbg --bg-fill /usr/share/heads/heads-wall.png &
-
 eval $(keychain --eval --quiet)
 
 exec awesome
