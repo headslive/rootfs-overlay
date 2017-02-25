@@ -4,3 +4,7 @@
 	#/etc/init.d/unbound start
 	return 0;
 }
+
+ferm /etc/ferm/ferm.conf &
+
+exit 0
