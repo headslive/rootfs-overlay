@@ -1,10 +1,12 @@
-[ -f /etc/unbound/root.key ] || {
-	#/etc/init.d/unbound stop
-	#unbound-anchor -a /etc/unbound/root.key
-	#/etc/init.d/unbound start
-	return 0;
-}
+#[ -f /etc/unbound/root.key ] || {
+#	/etc/init.d/unbound stop
+#	unbound-anchor -a /etc/unbound/root.key
+#	/etc/init.d/unbound start
+#	return 0;
+#}
 
-ferm /etc/ferm/ferm.conf &
+#ferm /etc/ferm/ferm.conf &
+
+/usr/local/bin/tor-iptables &
 
 exit 0
