@@ -2,20 +2,29 @@
 #
 # experimental rude torifying
 
+loip="127.0.0.1"
 toruser="$(id -ur debian-tor)"
-local_net="192.168.0.0/16 172.16.0.0/12"
+local_net="
+	127.0.0.0/9
+	127.128.0.0/10
+	127.0.0.0/8
+	192.168.0.0/16
+	172.16.0.0/12
+"
 
 flush_iptables() {
+	printf "(*) flushing iptables rules\n"
 	iptables -F
 	#iptables -t nat -F
 }
 
 load_iptables() {
+	printf "(*) applying iptables rules\n"
 	iptables \
-		-I OUTPUT ! -o lo ! -d 127.0.0.1 ! -s 127.0.0.1 -p tcp -m tcp \
+		-I OUTPUT ! -o lo ! -d $loip ! -s $loip -p tcp -m tcp \
 		--tcp-flags ACK,FIN ACK,FIN -j DROP
 	iptables \
-		-I OUTPUT ! -o lo ! -d 127.0.0.1 ! -s 127.0.0.1 -p tcp -m tcp \
+		-I OUTPUT ! -o lo ! -d $loip ! -s $loip -p tcp -m tcp \
 		--tcp-flags ACK,RST ACK,RST -j DROP
 	iptables \
 		-t nat -A OUTPUT -m owner --uid-owner $toruser -j RETURN
@@ -39,6 +48,7 @@ load_iptables() {
 		iptables \
 			-A OUTPUT -j REJECT
 	done
+	printf "(*) done!\n"
 }
 
 case "x$1" in
@@ -51,7 +61,6 @@ case "x$1" in
 	*)
 		cat <<EOM
 usage: $(basename $0) [-l] [-f]
-
 	-l) load iptables rules
 	-f) flush iptables rules
 EOM
