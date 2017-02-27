@@ -21,6 +21,9 @@ Log info syslog
 RunAsDaemon 1
 DataDirectory /var/lib/tor
 
+ControlPort 9051
+CookieAuthentication 1
+
 ## Disable default warnings on StartTLS for email. Let's not train our
 ## users to click through security warnings.
 WarnPlaintextPorts 23,109
