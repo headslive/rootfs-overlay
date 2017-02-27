@@ -3,5 +3,6 @@ Type=Application
 Name=Shutdown Menu
 Comment=A rude shutdown menu
 Terminal=false
+Icon=/usr/share/icons/Adwaita/48x48/emblems/emblem-urgent.png
 Exec=heads-shutdown-menu
 Categories=System;
