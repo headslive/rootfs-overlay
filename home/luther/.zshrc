@@ -3705,16 +3705,4 @@ alias l="ll"
 
 zrclocal
 
-## genrefcard.pl settings
 
-### doc strings for external functions from files
-#m# f5 grml-wallpaper() Sets a wallpaper (try completion for possible values)
-
-### example: split functions-search 8,16,24,32
-#@# split functions-search 8
-
-## END OF FILE #################################################################
-# vim:filetype=zsh foldmethod=marker autoindent expandtab shiftwidth=4
-# Local variables:
-# mode: sh
-# End:

@@ -5,6 +5,8 @@
 #	return 0;
 #}
 
+#/usr/local/bin/heads-generate-passphrase
+
 #/usr/local/bin/heads-torify -l &
 
 exit 0

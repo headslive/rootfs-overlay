@@ -1,0 +1,21 @@
+#!/bin/sh
+#
+# this will generate a random passphrase for the root password
+# runs on boot through rc.local
+
+pass="$(echo "$(shuf -n 3 /usr/share/dict/words --random-source=/dev/urandom | tr '\n' ' ')")"
+
+echo "root:$pass" | chpasswd || return 1
+
+cat <<EOF >> /home/luther/.zshrc
+echo
+echo "Welcome to heads!"
+echo "-----------------"
+echo "The root password is:"
+echo "-----------------"
+echo "${pass}"
+echo "-----------------"
+echo "You will not see it again"
+echo
+sed -i -e '/^zrclocal/q' /home/luther/.zshrc
+EOF
