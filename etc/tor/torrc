@@ -17,9 +17,9 @@ TransPort 9040
 
 ## Misc
 AvoidDiskWrites 1
-#Log debug stderr
-#RunAsDaemon 1
-#DataDirectory /var/lib/tor
+Log info syslog
+RunAsDaemon 1
+DataDirectory /var/lib/tor
 
 ## Disable default warnings on StartTLS for email. Let's not train our
 ## users to click through security warnings.

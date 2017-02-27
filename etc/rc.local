@@ -5,8 +5,10 @@
 #	return 0;
 #}
 
-#/usr/local/bin/heads-generate-passphrase
+udevadm hwdb --update &
 
-#/usr/local/bin/heads-torify -l &
+sudo -u debian-tor tor -f /etc/tor/torrc &
+/usr/local/bin/heads-generate-passphrase
+/usr/local/bin/heads-torify -l
 
 exit 0
