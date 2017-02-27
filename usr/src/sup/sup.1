@@ -1,0 +1,49 @@
+.TH SUP 1 sup\-1.2
+.SH NAME
+sup - a "small is beautiful" tool for UNIX privilege escalation
+.SH SYNOPSIS
+.B sup
+[ \fB-h -v\fR ]
+[ \fB-l\fR ]
+[ \fB-u \fIuser\fR \fB-g \fIgroup\fR ]
+[ \fB-b \fB-p \fIpidfile\fR ]
+\fBcommand\fR [ \fBargs...\fR ]
+.SH DESCRIPTION
+sup is a very small and secure C application. it is designed to run as root (with suid bit on) to facilitate the privilege escalation of users to execute certain programs as superuser.
+.P
+all settings in sup are hard-coded at compile time. sup is very portable and self-contained, designed for production use as a static binary. sup is a sort of hard-coded sudo: it is an ideal companion for artisans building small containers and embedded systems.
+.SH OPTIONS
+.TP
+.B \-h
+print help message
+.TP
+.B \-l
+list hardcoded configuration
+.TP
+.B \-v
+print version information
+.TP
+.B \-b
+run in daemon mode: fork process to background
+.TP
+.B \-p pidfile
+when in daemon mode, save first pid to file. beware this may not be the exact final pid of the forked process: some programs are more complex and go further forking new pids.
+.TP
+.B \-u username
+username for the target uid in setuid, in case not root. looked up by getpwnam(3) in /etc/passwd.
+.TP
+.B \-g groupname
+groupname for the target gid in setuid, in case not root. looked up by getpwnam(3) in /etc/passwd.
+
+
+.SH AUTHOR
+sup is copyleft software licensed as GNU Lesser Public License
+(LGPLv3). when compiled with the HASH flag on its license turns
+into GNU GPLv2 because of the sha256 component.
+.P
+sup is copyleft (c) 2009-2011 by pancake of nopcode.org
+.BR
+                (c) 2016      by jaromil of dyne.org
+.P
+the FIPS-180-2 sha-256 implementation optionally included in sup is
+copyleft (c) 2001-2003 by Christophe Devine
