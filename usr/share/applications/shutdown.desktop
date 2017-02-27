@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Shutdown Menu
+Comment=A rude shutdown menu
+Terminal=false
+Exec=heads-shutdown-menu
+Categories=System;
