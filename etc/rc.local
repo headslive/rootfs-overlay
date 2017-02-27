@@ -5,6 +5,6 @@
 #	return 0;
 #}
 
-/usr/local/bin/tor-iptables -l &
+#/usr/local/bin/heads-torify -l &
 
 exit 0
