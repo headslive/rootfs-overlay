@@ -16,6 +16,7 @@ echo "-----------------"
 echo "${pass}"
 echo "-----------------"
 echo "You will not see it again"
+echo "Start Xorg with 'startawesome'"
 echo
 sed -i -e '/^zrclocal/q' /home/luther/.zshrc
 EOF

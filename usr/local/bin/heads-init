@@ -1,0 +1,13 @@
+#!/bin/sh
+
+case "$1" in
+	shutdown)
+		/sbin/init 0
+		;;
+	reboot)
+		/sbin/init 6
+		;;
+	*)
+		exit 1
+		;;
+esac
