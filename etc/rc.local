@@ -5,8 +5,6 @@
 #	return 0;
 #}
 
-#ferm /etc/ferm/ferm.conf &
-
-/usr/local/bin/tor-iptables &
+/usr/local/bin/tor-iptables -l &
 
 exit 0
