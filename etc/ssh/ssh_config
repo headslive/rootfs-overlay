@@ -3,7 +3,7 @@ ProxyCommand none
 
 Host *
 
-ProxyCommand /usr/local/lib/connect-socks %h %p
+ProxyCommand /usr/bin/connect -S localhost:9050 %h %p
 
 ServerAliveInterval 60
 
