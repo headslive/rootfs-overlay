@@ -1,9 +1,9 @@
 #SocksPort 127.0.0.1:9050 IsolateDestAddr IsolateDestPort
 #SocksPort 127.0.0.1:9061 IsolateDestAddr
 #SocksPort 127.0.0.1:9062 IsolateDestAddr IsolateDestPort
+#SocksPort 127.0.0.1:9150 IsolateSOCKSAuth KeepAliveIsolateSOCKSAuth
 
 SocksPort 127.0.0.1:9050 IsolateDestAddr IsolateDestPort
-SocksPort 127.0.0.1:9150 IsolateSOCKSAuth KeepAliveIsolateSOCKSAuth
 
 VirtualAddrNetwork 10.133.0.0/10
 
