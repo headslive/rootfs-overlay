@@ -3,11 +3,5 @@
 # this script will update the rootfs when executed,
 # overwriting any existing changes
 
-[ "$USER" = root ] || {
-	printf "%s must be ran with root privileges!\n" "$(basename $0)"
-	exit 1
-}
-
 git fetch --all && git reset --hard origin/master
-
 [ -f /tmp/update-hooks/new ] && . /tmp/update-hooks/new
