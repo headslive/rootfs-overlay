@@ -3,6 +3,7 @@
 #test -d /dev/dri && compton -b --config ~/.config/compton.conf &
 #feh $(xkcd) &
 
+dunst &
 eval $(keychain --eval --quiet)
 
 exec awesome
