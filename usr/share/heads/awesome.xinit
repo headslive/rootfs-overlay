@@ -4,6 +4,7 @@
 #feh $(xkcd) &
 
 dunst &
+/usr/sbin/wpa_gui -t &
 eval $(keychain --eval --quiet)
 
 exec awesome
