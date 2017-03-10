@@ -1,0 +1,3 @@
+Defaults rootpw
+Defaults insults
+luther heads = NOPASSWD: /usr/local/bin/tomb , /usr/sbin/pm-suspend
