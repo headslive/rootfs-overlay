@@ -1,3 +1,7 @@
-deb http://devuanfwojg73k6r.onion/merged jessie          main
-deb http://devuanfwojg73k6r.onion/merged jessie-updates  main
-deb http://devuanfwojg73k6r.onion/merged jessie-security main
+deb tor+http://devuanfwojg73k6r.onion/merged ascii          main
+deb tor+http://devuanfwojg73k6r.onion/merged ascii-updates  main
+deb tor+http://devuanfwojg73k6r.onion/merged ascii-security main
+
+#deb tor+http://devuanfwojg73k6r.onion/merged ascii          main
+#deb tor+http://devuanfwojg73k6r.onion/merged ascii-updates  main
+#deb tor+http://devuanfwojg73k6r.onion/merged ascii-security main
