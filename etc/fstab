@@ -1,0 +1,2 @@
+# See the manpage fstab(5) for more information.
+# <fs>                 <mountpoint>    <type>          <opts>          <dump/pass>
