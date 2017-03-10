@@ -1,6 +1,0 @@
-#!/bin/sh
-
-cp -f /usr/share/heads/awesome.xinit $HOME/.xinitrc
-chmod 755 $HOME/.xinitrc
-
-/usr/bin/startx -- vt1 -nolisten tcp

@@ -1,6 +1,0 @@
-#!/bin/sh
-
-cp -f /usr/share/heads/mate.xinit /home/luther/.xinitrc
-chmod +x /home/luther/.xinitrc
-
-startx -- vt1 -nolisten tcp
