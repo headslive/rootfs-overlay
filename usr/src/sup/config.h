@@ -20,7 +20,7 @@
 static struct rule_t rules[] = {
     // allow user to run these programs when found in path location
 	{ USER, GROUP, "heads-init", "/usr/local/bin/heads-init", "c8f221303a2651b49cfea39486a2a76948f47efc616b663e687d8c02c51e883a" },
-	{ USER, GROUP, "heads-update", "/usr/local/bin/heads-update", "714ca73cd02976323c5dccfd200f69f182a2998ee5485a0be53395b9e9013548" },
+	/* { USER, GROUP, "heads-update", "/usr/local/bin/heads-update", "714ca73cd02976323c5dccfd200f69f182a2998ee5485a0be53395b9e9013548" }, */
 
     { 0 },
 };
