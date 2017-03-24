@@ -111,7 +111,9 @@ mymainmenu = freedesktop.menu.build({
 		-- other triads can be put here
 	},
 	after = {
-		{ "Open terminal", terminal },
+		{ "Open terminal", terminal, "/usr/share/icons/Adwaita/32x32/apps/utilities-terminal.png" },
+		{ "Lock screen",   "i3lock", "/usr/share/icons/Adwaita/32x32/apps/preferences-desktop-screensaver.png" },
+		{ "Shutdown menu", "heads-shutdown-menu", "/usr/share/icons/Adwaita/32x32/emblems/emblem-important.png" },
 		-- other triads can be put here
 	}
 })
