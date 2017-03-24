@@ -1,0 +1,16 @@
+<!DOCTYPE accounts>
+<accounts version="0.16.330 (2014-04-05)" xmlns="http://psi-im.org/options">
+ <proxies>
+  <a0>
+   <port type="int">9050</port>
+   <pass type="QString"></pass>
+   <useAuth type="bool">false</useAuth>
+   <host type="QString">127.0.0.1</host>
+   <url type="QString"></url>
+   <user type="QString"></user>
+   <type type="QString">socks</type>
+   <name type="QString">tor</name>
+  </a0>
+ </proxies>
+ <order type="QStringList"/>
+</accounts>
