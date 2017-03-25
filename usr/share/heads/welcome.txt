@@ -7,4 +7,7 @@ open a menu which allows you to easily run applications. If you are
 comfortable, in the menu you will also find the AwesomeWM manual and
 keybindings.
 
+To connect to the Internet, try using Wicd. You can find the tray icon
+on the top-right of the screen, just next to the date and time.
+
 Enjoy!

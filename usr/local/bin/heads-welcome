@@ -6,10 +6,10 @@
 yad \
 	--title="Welcome!" \
 	--text-info \
-	--image="../../share/heads/mouse.png" \
+	--image="/usr/share/heads/mouse.png" \
 	--button=OK:0 \
 	--center \
 	--width=640 \
 	--height=280 \
 	--wrap \
-	--filename="../../share/heads/welcome.txt"
+	--filename="/usr/share/heads/welcome.txt"
