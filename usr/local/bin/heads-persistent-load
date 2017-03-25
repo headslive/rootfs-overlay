@@ -1,0 +1,68 @@
+#!/bin/sh
+#
+# this will guide you through a persistence setup for heads
+# should become more sophisticated in the future
+
+yesno() {
+	printf "is this all right? [y/N] "
+	read dummy
+	case "$dummy" in
+		y|Y)
+			;;
+		n|N)
+			return 1
+			;;
+		*)
+			printf "unknown reply\n"
+			$0
+			;;
+	esac
+}
+
+find_device() {
+	awk '/lib\/live\/mount\/medium/ {print $1}' /proc/mounts | cut -c 1-8
+}
+
+mount_device() {
+	[ -b "$(find_device)2" ] || {
+		printf "The persistence partition was not found. Exiting...\n"
+		exit 1
+	}
+	mount "$(find_device)2" /mnt
+	cd /mnt
+	[ -f "persistence.tomb" ] || {
+		printf "The tomb was not found. Exiting...\n"
+		exit 1
+	}
+	[ -f "persistence.tomb.key" ] || {
+		printf "The tomb's key was not found. Exiting...\n"
+		exit 1
+	}
+	cd - >/dev/null
+}
+
+prepare_tomb() {
+	cat <<EOF > /home/luther/tombprep
+#!/bin/sh
+cd /mnt
+sudo tomb open persistence.tomb -k persistence.tomb.key
+rm -f /home/luther/tombprep
+EOF
+	chmod +x /home/luther/tombprep
+	sudo -u luther /home/luther/tombprep
+}
+
+cat <<EOM
+              +-------------------------------------+
+              |        heads persistence load       |
+              +-------------------------------------+
+
+We're about to mount your persistence setup. If you have not setup
+persistence already, answer 'N' and run 'sudo heads-persistent-setup'.
+Otherwise, answer 'Y' to continue.
+EOM
+
+yesno || exit 1
+
+mount_device
+prepare_tomb

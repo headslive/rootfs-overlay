@@ -1,0 +1,125 @@
+#!/bin/sh
+#
+# this will guide you through a persistence setup for heads
+# should become more sophisticated in the future
+
+yesno() {
+	printf "is this all right? [y/N] "
+	read dummy
+	case "$dummy" in
+		y|Y)
+			;;
+		n|N)
+			return 1
+			;;
+		*)
+			printf "unknown reply\n"
+			$0
+			;;
+	esac
+}
+
+find_device() {
+	awk '/lib\/live\/mount\/medium/ {print $1}' /proc/mounts | cut -c 1-8
+}
+
+format_partition() {
+	cat <<EOF | fdisk "$(find_device)"
+n
+p
+
+
+t
+2
+83
+w
+EOF
+	partprobe
+	sleep 1
+	mkfs.ext2 "$(find_device)2" && sync
+	sleep 1
+}
+
+mount_device() {
+	mount "$(find_device)2" /mnt
+	cd /mnt
+	chown 1000:1000 .
+	cd - >/dev/null
+}
+
+prepare_tomb() {
+	cat <<EOF > /home/luther/tombprep
+#!/bin/sh
+cd /mnt
+freespace=\$(df -BM | grep "^$(find_device)2" | awk '{print $4}' | tr -d 'M')
+freespace=\$(( \$freespace - 42 ))
+tomb dig -s \$freespace persistence.tomb
+sudo tomb forge persistence.tomb.key --use-urandom --unsafe
+sudo tomb lock persistence.tomb -k persistence.tomb.key
+sudo tomb open persistence.tomb -k persistence.tomb.key
+rm -f /home/luther/tombprep
+EOF
+	chmod +x /home/luther/tombprep
+	sudo -u luther /home/luther/tombprep
+	cd /media/persistence
+	chown 1000:1000 .
+	chown 1000:1000 .*
+
+	printf "\n"
+	cat <<EOF | tee README.txt
+Your tomb has been created. This text is also now located in the
+tomb: 'README.txt'
+
+The location of the tomb is "$(find_device)2" and it's mounted under
+/media/persistence
+
+You can now put files inside the tomb, and they will persist within
+reboots. You can also use this tomb on any other computer.
+To make the tomb useful, you can use a feature called 'bind-hooks'.
+This feature can bind directories inside the tomb to other places on
+the system - which allows for easy overlaying of your data.
+
+An example of this is in /media/persistence/bind-hooks.example. To
+enable the feature, rename it (or create a new file) to 'bind-hooks'.
+
+The syntax of the file is the following:
+
+	email Mail
+	gnupg .gnupg
+
+One line per directory you want to bind. The first is a directory
+inside the tomb, and the second one is a directory relative to your
+user's HOME directory.
+
+The tomb was now automatically mounted, but for future times, you will
+have to issue the command 'sudo heads-persistent-load'. This will find
+the tomb automatically and prompt you for a passphrase.
+
+Enjoy!
+EOF
+
+	cat <<EOF > bind-hooks.example
+email Mail
+gnupg .gnupg
+EOF
+}
+
+cat <<EOM
+              +-------------------------------------+
+              |       heads persistence setup       |
+              +-------------------------------------+
+
+This script will create a persistent tomb on the USB stick you are
+running heads from. It will create a new partition using all the
+available free space, and inside it will create a new tomb and its
+key. You will be prompted for a password for the tomb's key. After
+it is done, you will get more instructions on how to use it. The
+instructions will also be written inside the tomb so you can read
+it at a later point.
+EOM
+
+yesno || exit 1
+
+format_partition
+mount_device
+prepare_tomb
