@@ -1,0 +1,10 @@
+
+Welcome to heads!
+I hope this finds you well :)
+
+To begin using heads, you can right-click anywhere on the desktop to
+open a menu which allows you to easily run applications. If you are
+comfortable, in the menu you will also find the AwesomeWM manual and
+keybindings.
+
+Enjoy!

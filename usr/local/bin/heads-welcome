@@ -1,0 +1,15 @@
+#!/bin/sh
+#
+# heads welcome message
+# https://www.mankier.com/1/yad
+
+yad \
+	--title="Welcome!" \
+	--text-info \
+	--image="../../share/heads/mouse.png" \
+	--button=OK:0 \
+	--center \
+	--width=640 \
+	--height=280 \
+	--wrap \
+	--filename="../../share/heads/welcome.txt"

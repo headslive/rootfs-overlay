@@ -1,10 +1,12 @@
 #!/bin/sh
 #
 # a rude shutdown menu
-# https://help.gnome.org/users/zenity/stable/
 
-watdo="$(zenity --list \
+watdo="$(yad --list \
 	--title="Shutdown" \
+	--center \
+	--width=300 \
+	--height=180 \
 	--column="Action" --column="Description" \
 	"shutdown" "perform a system shutdown" \
 	"reboot"   "perform a system reboot" \
@@ -12,11 +14,11 @@ watdo="$(zenity --list \
 
 case "$watdo" in
 	shutdown)
-		zenity --info --text="Will shut down after you click OK."
+		yad --info --text="Will shut down after you click OK."
 		exec sup heads-init shutdown
 		;;
 	reboot)
-		zenity --info --text="Will shut down after you click OK."
+		yad --info --text="Will shut down after you click OK."
 		exec sup heads-init reboot
 		;;
 	suspend)
