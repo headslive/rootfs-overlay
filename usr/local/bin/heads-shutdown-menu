@@ -7,7 +7,8 @@ watdo="$(zenity --list \
 	--title="Shutdown" \
 	--column="Action" --column="Description" \
 	"shutdown" "perform a system shutdown" \
-	"reboot"   "perform a system reboot")"
+	"reboot"   "perform a system reboot" \
+	"suspend"  "suspend to ram")"
 
 case "$watdo" in
 	shutdown)
@@ -17,6 +18,9 @@ case "$watdo" in
 	reboot)
 		zenity --info --text="Will shut down after you click OK."
 		exec sup heads-init reboot
+		;;
+	suspend)
+		exec sudo /usr/sbin/pm-suspend
 		;;
 	*)
 		exit 0
