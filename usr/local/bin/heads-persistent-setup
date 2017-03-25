@@ -4,7 +4,7 @@
 # should become more sophisticated in the future
 
 yesno() {
-	printf "is this all right? [y/N] "
+	printf "Is this all right? [y/N] "
 	read dummy
 	case "$dummy" in
 		y|Y)
@@ -27,6 +27,7 @@ format_partition() {
 	cat <<EOF | fdisk "$(find_device)"
 n
 p
+2
 
 
 t
@@ -51,9 +52,14 @@ prepare_tomb() {
 	cat <<EOF > /home/luther/tombprep
 #!/bin/sh
 cd /mnt
-freespace=\$(df -BM | grep "^$(find_device)2" | awk '{print $4}' | tr -d 'M')
+freespace=\$(df -BM | grep "^$(find_device)2" | awk '{print \$4}' | tr -d 'M')
+tombsize=\$freespace
 freespace=\$(( \$freespace - 42 ))
-tomb dig -s \$freespace persistence.tomb
+while ! [ \$tombsize -le \$freespace ]; do
+	printf "enter size of tomb in MiB (max \$freespace): "
+	read tombsize
+done
+tomb dig -s \$tombsize persistence.tomb
 sudo tomb forge persistence.tomb.key --use-urandom --unsafe
 sudo tomb lock persistence.tomb -k persistence.tomb.key
 sudo tomb open persistence.tomb -k persistence.tomb.key
@@ -116,6 +122,7 @@ key. You will be prompted for a password for the tomb's key. After
 it is done, you will get more instructions on how to use it. The
 instructions will also be written inside the tomb so you can read
 it at a later point.
+
 EOM
 
 yesno || exit 1

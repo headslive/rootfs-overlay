@@ -4,7 +4,7 @@
 # should become more sophisticated in the future
 
 yesno() {
-	printf "is this all right? [y/N] "
+	printf "Is this all right? [y/N] "
 	read dummy
 	case "$dummy" in
 		y|Y)
@@ -60,6 +60,7 @@ cat <<EOM
 We're about to mount your persistence setup. If you have not setup
 persistence already, answer 'N' and run 'sudo heads-persistent-setup'.
 Otherwise, answer 'Y' to continue.
+
 EOM
 
 yesno || exit 1
