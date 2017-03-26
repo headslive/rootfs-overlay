@@ -1,14 +1,4 @@
-#[ -f /etc/unbound/root.key ] || {
-#	/etc/init.d/unbound stop
-#	unbound-anchor -a /etc/unbound/root.key
-#	/etc/init.d/unbound start
-#	return 0;
-#}
-
 udevadm hwdb --update &
-
-sudo -u debian-tor tor -f /etc/tor/torrc &
 /usr/local/bin/heads-generate-passphrase
-/usr/local/bin/heads-torify -l
 
 exit 0
