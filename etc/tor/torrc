@@ -1,11 +1,8 @@
-#SocksPort 127.0.0.1:9050 IsolateDestAddr IsolateDestPort
-#SocksPort 127.0.0.1:9061 IsolateDestAddr
-#SocksPort 127.0.0.1:9062 IsolateDestAddr IsolateDestPort
-#SocksPort 127.0.0.1:9150 IsolateSOCKSAuth KeepAliveIsolateSOCKSAuth
-
+## Socks ports
 SocksPort 127.0.0.1:9050 IsolateDestAddr IsolateDestPort
-
-VirtualAddrNetworkIPv4 10.133.0.0/10
+SocksPort 127.0.0.1:9061 IsolateDestAddr
+SocksPort 127.0.0.1:9062 IsolateDestAddr IsolateDestPort
+SocksPort 127.0.0.1:9150 IsolateSOCKSAuth KeepAliveIsolateSOCKSAuth
 
 ## Torified DNS
 DNSPort 5353
@@ -24,6 +21,5 @@ DataDirectory /var/lib/tor
 ControlPort 9051
 CookieAuthentication 1
 
-## Disable default warnings on StartTLS for email. Let's not train our
-## users to click through security warnings.
+WarnUnsafeSocks 0
 WarnPlaintextPorts 23,109
