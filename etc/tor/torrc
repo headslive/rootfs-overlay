@@ -4,6 +4,10 @@ SocksPort 127.0.0.1:9061 IsolateDestAddr
 SocksPort 127.0.0.1:9062 IsolateDestAddr IsolateDestPort
 SocksPort 127.0.0.1:9150 IsolateSOCKSAuth KeepAliveIsolateSOCKSAuth
 
+ControlPort 9052
+ControlListenAddress 127.0.0.1
+CookieAuthentication 1
+
 ## Torified DNS
 DNSPort 5353
 AutomapHostsOnResolve 1
@@ -11,15 +15,9 @@ AutomapHostsSuffixes .exit,.onion
 
 ## Transparent proxy
 TransPort 9040
+TransListenAddress 127.0.0.1
 
 ## Misc
 AvoidDiskWrites 1
-Log info syslog
-RunAsDaemon 1
-DataDirectory /var/lib/tor
 
-ControlPort 9051
-CookieAuthentication 1
-
-WarnUnsafeSocks 0
 WarnPlaintextPorts 23,109
