@@ -6,7 +6,6 @@ SocksPort 127.0.0.1:9150 IsolateSOCKSAuth KeepAliveIsolateSOCKSAuth
 
 ControlPort 9052
 ControlListenAddress 127.0.0.1
-CookieAuthentication 1
 
 ## Torified DNS
 DNSPort 5353
