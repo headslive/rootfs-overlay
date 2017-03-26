@@ -2,52 +2,15 @@
 #
 # experimental rude torifying
 
-loip="127.0.0.1"
-toruser="$(id -ur debian-tor)"
-local_net="
-	127.0.0.0/9
-	127.128.0.0/10
-	127.0.0.0/8
-	192.168.0.0/16
-	172.16.0.0/12
-"
-
 flush_iptables() {
 	printf "(*) flushing iptables rules\n"
 	iptables -F
-	#iptables -t nat -F
+	iptables -t nat -F
 }
 
 load_iptables() {
 	printf "(*) applying iptables rules\n"
-	iptables \
-		-I OUTPUT ! -o lo ! -d $loip ! -s $loip -p tcp -m tcp \
-		--tcp-flags ACK,FIN ACK,FIN -j DROP
-	iptables \
-		-I OUTPUT ! -o lo ! -d $loip ! -s $loip -p tcp -m tcp \
-		--tcp-flags ACK,RST ACK,RST -j DROP
-	iptables \
-		-t nat -A OUTPUT -m owner --uid-owner $toruser -j RETURN
-	iptables \
-		-t nat -A OUTPUT -p udp --dport 53 -j REDIRECT --to-ports 5353
-
-	for net in $local_net; do
-		iptables \
-			-t nat -A OUTPUT -d $net -j RETURN
-		iptables \
-			-t nat -A OUTPUT -p tcp --syn -j REDIRECT --to-ports 9040
-		iptables \
-			-A OUTPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
-	done
-
-	for net in $local_net; do
-		iptables \
-			-A OUTPUT -d $net -j ACCEPT
-		iptables \
-			-A OUTPUT -m owner --uid-owner $toruser -j ACCEPT
-		iptables \
-			-A OUTPUT -j REJECT
-	done
+	iptables-restore < /root/iptables.rules
 	printf "(*) done!\n"
 }
 
