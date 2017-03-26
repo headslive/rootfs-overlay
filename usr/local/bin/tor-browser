@@ -1,0 +1,20 @@
+#!/bin/sh
+
+export TOR_SOCKS_HOST=127.0.0.1
+export TOR_SOCKS_PORT=9150
+
+export LD_LIBRARY_PATH=/usr/local/lib/tor-browser
+export FONTCONFIG_PATH=/usr/local/lib/tor-browser/TorBrowser/Data/fontconfig
+export FONTCONFIG_file=fonts.conf
+
+USER_PROFILE="$HOME/.tor-browser/profile.default"
+
+[ -d "$USER_PROFILE" ] || {
+	mkdir -p "$HOME"/.tor-browser
+	cp -r /etc/tor-browser/profile "$USER_PROFILE"
+}
+
+cd /usr/local/lib/tor-browser
+
+exec /usr/local/lib/tor-browser/firefox -allow-remote --class "Tor Browser" \
+	-profile "$USER_PROFILE" "$@"

@@ -2,7 +2,8 @@
 Name=Tor Browser
 Comment=Tor Browser is +1 for privacy and -1 for mass surceillance
 Exec=/home/luther/start-tor-browser.desktop %u
-Icon=/home/luther/Browser/browser/icons/mozicon128.png
+Exec=/usr/local/bin/tor-browser %u
+Icon=/usr/local/lib/tor-browser/browser/icons/mozicon128.png
 Terminal=false
 MimeType=text/html;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;text/mml;x-scheme-handler/http;x-scheme-handler/https;
 Categories=Network;WebBrowser;
