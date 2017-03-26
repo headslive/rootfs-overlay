@@ -1,0 +1,4 @@
+{
+	"auto_connect": true,
+	"proxy": "socks5:127.0.0.1:9050"
+}
