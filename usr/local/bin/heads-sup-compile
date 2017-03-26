@@ -1,0 +1,51 @@
+#!/bin/sh
+
+supsrc="/usr/src/sup"
+
+printsettings() {
+	cat <<EOF
+/* sup's configuration file /*
+
+#define HASH 1
+#define DAEMON 0
+
+#ifndef FLAGSONLY
+
+#define USER 1000
+#define GROUP -1
+
+#define SETUID 0
+#define SETGID 0
+
+#define CHROOT ""
+#define CHRDIR ""
+
+static struct rule_t rules[] = {
+	/* allow user to run these programs when found in path location */
+EOF
+}
+
+printrest() {
+	cat <<EOF
+
+	{ 0 },
+};
+EOF
+}
+
+getsha() {
+	sha256sum "$1" | cut -d' ' -f1
+}
+
+binpath="$(which $1)"
+
+grep -q "\"$binpath\"" $supsrc/allowed.txt && sed "/\"$binpath\"/d" -i $supsrc/allowed.txt
+
+printentry >> $supsrc/allowed.txt
+printsettings | cat - $supsrc/allowed.txt > $supsrc/config.h
+printrest >> $supsrc/allowed.txt
+
+cd $supsrc
+make clean
+make
+make install
