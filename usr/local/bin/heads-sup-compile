@@ -1,10 +1,10 @@
 #!/bin/sh
 
-supsrc="/usr/src/sup"
+SUPSRC="/usr/src/sup"
 
 printsettings() {
 	cat <<EOF
-/* sup's configuration file /*
+/* sup's configuration file */
 
 #define HASH 1
 #define DAEMON 0
@@ -30,6 +30,8 @@ printrest() {
 
 	{ 0 },
 };
+
+#endif
 EOF
 }
 
@@ -37,15 +39,18 @@ getsha() {
 	sha256sum "$1" | cut -d' ' -f1
 }
 
-binpath="$(which $1)"
+cd $SUPSRC
 
-grep -q "\"$binpath\"" $supsrc/allowed.txt && sed "/\"$binpath\"/d" -i $supsrc/allowed.txt
+printsettings > config.h
 
-printentry >> $supsrc/allowed.txt
-printsettings | cat - $supsrc/allowed.txt > $supsrc/config.h
-printrest >> $supsrc/allowed.txt
+for exe in "$@"; do
+	which "$exe" >/dev/null 2>&1 || continue
+	printf "\t{ USER, GROUP, \"%s\", \"%s\", \"%s\" },\n" \
+		"$(basename $exe)" "$exe" "$(getsha $exe)" >> config.h
+done
 
-cd $supsrc
+printrest >> config.h
+
 make clean
-make
+make musl
 make install
