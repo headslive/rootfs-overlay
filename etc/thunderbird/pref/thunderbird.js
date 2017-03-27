@@ -4,8 +4,8 @@ pref("intl.locale.matchOS", true);
 
 pref("mail.shell.checkDefaultMail", false);
 
-pref("network.protocol-handler.app.http", "icecat");
-pref("network.protocol-handler.app.https", "icecat");
+pref("network.protocol-handler.app.http", "x-www-browser");
+pref("network.protocol-handler.app.https", "x-www-browser");
 
 pref("mailnews.database.global.indexer.enabled", false);
 
