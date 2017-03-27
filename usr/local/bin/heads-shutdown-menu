@@ -7,19 +7,30 @@ watdo="$(yad --list \
 	--center \
 	--width=300 \
 	--height=180 \
+	--separator=" & " \
+	--print-column=1 \
 	--column="Action" --column="Description" \
 	"shutdown" "perform a system shutdown" \
 	"reboot"   "perform a system reboot" \
 	"suspend"  "suspend to ram")"
 
+watdo="$(echo $watdo | cut -d' ' -f1)"
 case "$watdo" in
 	shutdown)
-		yad --info --text="Will shut down after you click OK."
-		exec sup heads-init shutdown
+		yad \
+			--info \
+			--wrap \
+			--center \
+			--text="Will shut down after you click OK."
+		[ $? = 0 ] && exec sup heads-init shutdown
 		;;
 	reboot)
-		yad --info --text="Will shut down after you click OK."
-		exec sup heads-init reboot
+		yad \
+			--info \
+			--wrap \
+			--center \
+			--text="Will shut down after you click OK."
+		[ $? = 0 ] && exec sup heads-init reboot
 		;;
 	suspend)
 		exec sudo /usr/sbin/pm-suspend
