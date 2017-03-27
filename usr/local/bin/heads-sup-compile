@@ -2,6 +2,10 @@
 
 SUPSRC="/usr/src/sup"
 
+BINS="
+	/usr/local/bin/heads-init
+"
+
 printsettings() {
 	cat <<EOF
 /* sup's configuration file */
@@ -43,7 +47,7 @@ cd $SUPSRC
 
 printsettings > config.h
 
-for exe in "$@"; do
+for exe in "$BINS"; do
 	which "$exe" >/dev/null 2>&1 || continue
 	printf "\t{ USER, GROUP, \"%s\", \"%s\", \"%s\" },\n" \
 		"$(basename $exe)" "$exe" "$(getsha $exe)" >> config.h
