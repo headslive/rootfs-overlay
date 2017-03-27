@@ -8,6 +8,9 @@ yad \
 	--text-info \
 	--image="/usr/share/heads/mouse.png" \
 	--button=OK:0 \
+	--buttons-layout=spread \
+	--fontname="Liberation Sans regular 10" \
+	--margins=15 \
 	--center \
 	--width=640 \
 	--height=280 \
