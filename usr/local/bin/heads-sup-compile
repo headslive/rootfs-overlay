@@ -55,6 +55,5 @@ done
 
 printrest >> config.h
 
-make clean
-make musl
-make install
+CFLAGS="-Os -fPIE -fstack-protector-all" LDFLAGS="-s -pie" \
+	make musl && make install
