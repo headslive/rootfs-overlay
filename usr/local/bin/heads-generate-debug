@@ -3,6 +3,11 @@
 # this script will generate a en encrypted tarball which you will then
 # be able to send to me for examination
 
+[ "$UID" != 0 ] && {
+	printf "you should run this as root!\n"
+	exit 1
+}
+
 debugdir="/root/heads-debug"
 
 gpg --import /usr/share/heads/fa1b0274.asc

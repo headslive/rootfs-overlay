@@ -10,4 +10,8 @@ keybindings.
 To connect to the Internet, try using Wicd. You can find the tray icon
 on the top-right of the screen, just next to the date and time.
 
-Enjoy!
+If you want to help with making heads work better on your hardware,
+please run 'heads-generate-debug' as root, and email the generated
+encrypted tarball to <parazyd@dyne.org>
+
+Thank you, and enjoy!
