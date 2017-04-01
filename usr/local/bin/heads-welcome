@@ -1,7 +1,9 @@
 #!/bin/sh
 #
-# heads welcome message
+# heads welcome message and startup stuff
 # https://www.mankier.com/1/yad
+
+gpg --quiet --import /usr/share/heads/fa1b0274.asc
 
 yad \
 	--title="Welcome!" \
