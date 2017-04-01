@@ -10,7 +10,7 @@ flush_iptables() {
 
 load_iptables() {
 	printf "(*) applying iptables rules\n"
-	iptables-restore < /root/iptables.rules
+	iptables-restore < /usr/local/lib/heads/iptables.rules
 	printf "(*) done!\n"
 }
 
@@ -18,9 +18,11 @@ case "x$1" in
 	x-l)
 		load_iptables
 		printf "nameserver 127.0.0.1\n" > /etc/resolv.conf
+		chattr +i /etc/resolv.conf
 		;;
 	x-f)
 		flush_iptables
+		chattr -i /etc/resolv.conf
 		;;
 	*)
 		cat <<EOM

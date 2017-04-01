@@ -1,5 +1,5 @@
 udevadm hwdb --update &
-/usr/local/bin/heads-generate-passphrase
-/usr/local/bin/heads-sup-compile &
+/usr/local/lib/heads/heads-generate-passphrase
+/usr/local/lib/heads/heads-sup-compile &
 
 exit 0
