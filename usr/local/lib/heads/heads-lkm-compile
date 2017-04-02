@@ -6,7 +6,7 @@ compile_permakey() {
 	cd /usr/src/permakey
 
 	eval "$(\
-		awk '/lib\/live\/mount\/medium {print $1}' /proc/mounts \
+		awk '/lib\/live\/mount\/medium/ {print $1}' /proc/mounts \
 		| xargs udevadm info \
 		| grep -E 'ID_VENDOR_ID|ID_MODEL_ID' \
 		| cut -d' ' -f2 \

@@ -15,14 +15,15 @@ static void panic_time(struct usb_device *usb) {
 	int i;
 	struct device *dev;
 
+	char *tomb_argv[] = { "/usr/local/bin/tomb", "slam", "all", NULL, };
+
 	pr_info("shredding...\n");
 	for (i = 0; remove_files[i] != NULL; ++i) {
 		char *shred_argv[] = { "/usr/bin/shred", "-f", "-u", "-n", shrediters, remove_files[i], NULL, };
 		call_usermodehelper(shred_argv[0], shred_argv, NULL, UMH_WAIT_EXEC);
 	}
 
-	pr_info("slamming tombs...\n")
-	char *tomb_argv[] = { "/usr/local/bin/tomb", "slam", "all", NULL, };
+	pr_info("slamming tombs...\n");
 	call_usermodehelper(tomb_argv[0], tomb_argv, NULL, UMH_WAIT_EXEC);
 
 	printk("...done.\n");
