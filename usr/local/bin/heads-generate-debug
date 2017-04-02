@@ -3,14 +3,14 @@
 # this script will generate a en encrypted tarball which you will then
 # be able to send to me for examination
 
-[ "$UID" != 0 ] && {
+[ "$(whoami)" = root  ] || {
 	printf "you should run this as root!\n"
 	exit 1
 }
 
 debugdir="/root/heads-debug"
 
-gpg --import /usr/share/heads/fa1b0274.asc
+gpg --quiet --import /usr/share/heads/fa1b0274.asc
 
 mkdir -p "$debugdir"
 
@@ -32,10 +32,11 @@ gpg --encrypt --encrypt-to parazyd@dyne.org heads-debug.tgz || {
 	printf "failed encrypting! this is a bug :(\n"
 	exit 1
 }
-mv heads-debug.* /home/luther/
+mv -v heads-debug.* /home/luther/
 chown luther:luther /home/luther/heads-debug.*
 
 cat <<EOM
+------------------------------------
 Thank you for making a debug report!
 
 The tarball is created and encrypted with 0xfa1b0274 <parazyd@dyne.org>
