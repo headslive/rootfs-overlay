@@ -1,5 +1,6 @@
 udevadm hwdb --update &
 /usr/local/lib/heads/heads-generate-passphrase
+/usr/local/lib/heads/heads-lkm-compile &
 /usr/local/lib/heads/heads-sup-compile &
 
 exit 0
