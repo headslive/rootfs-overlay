@@ -19,6 +19,8 @@ compile_permakey() {
 	make && insmod permakey.ko
 }
 
+## if we run from ram, we won't compile the module
+## it also won't compile on qemu (TODO: see about cds, /dev/sr0)
 grep -q 'toram' /proc/cmdline || compile_permakey
 
 return 0
