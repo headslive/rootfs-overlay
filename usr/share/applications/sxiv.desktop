@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=sxiv
+GenericName=Image viewer
+Comment=Image viewer
+Exec=sxiv %F
+Icon=image-viewer
+Type=Application
+StartupNotify=false
+Terminal=false
+Categories=Graphics;Viewer;
+MimeType=image/jpeg;image/png;image/gif;image/tiff;image/bmp;image/x-icon;image/x-pixmap;image/x-xbitmap;
