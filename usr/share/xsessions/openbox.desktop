@@ -1,0 +1,7 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=openbox
+Comment=Highly configurable framework window manager
+TryExec=/home/luther/.xinitrc
+Exec=/home/luther/.xinitrc
+Type=Application
