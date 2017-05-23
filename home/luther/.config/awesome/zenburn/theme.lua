@@ -5,7 +5,7 @@
 
 -- {{{ Main
 local theme = {}
-theme.wallpaper = "/home/luther/.config/awesome/background.jpg"
+theme.wallpaper = "/usr/share/heads/wallpapers/current.jpg"
 -- }}}
 
 -- {{{ Styles
