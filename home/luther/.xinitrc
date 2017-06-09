@@ -1,7 +1,7 @@
 #!/bin/sh
+
 lxpanel &
-#nitrogen --restore &
 heads-welcome &
-#wicd-gtk -t &
+pcmanfm --desktop &
 
 exec openbox-session
