@@ -7,12 +7,14 @@
 deb tor+http://devuanfwojg73k6r.onion/merged ascii          main
 deb tor+http://devuanfwojg73k6r.onion/merged ascii-updates  main
 deb tor+http://devuanfwojg73k6r.onion/merged ascii-security main
+deb tor+http://devuanfwojg73k6r.onion/devuan experimental   main
 
 #deb-src http://auto.mirror.devuan.org/merged ascii          main
 #deb-src http://auto.mirror.devuan.org/merged ascii-updates  main
 #deb-src http://auto.mirror.devuan.org/merged ascii-security main
 #deb-src http://auto.mirror.devuan.org/devuan experimental   main
 
-deb-src tor+http://devuanfwojg73k6r.onion/merged ascii          main
-deb-src tor+http://devuanfwojg73k6r.onion/merged ascii-updates  main
-deb-src tor+http://devuanfwojg73k6r.onion/merged ascii-security main
+#deb-src tor+http://devuanfwojg73k6r.onion/merged ascii          main
+#deb-src tor+http://devuanfwojg73k6r.onion/merged ascii-updates  main
+#deb-src tor+http://devuanfwojg73k6r.onion/merged ascii-security main
+#deb-src tor+http://devuanfwojg73k6r.onion/devuan experimental   main
