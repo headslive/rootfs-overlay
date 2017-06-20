@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=gtomb
-Comment=A graphical interface for Tomb
-Exec=gtomb %u
-Terminal=false
-Type=Application
-Icon=/usr/share/heads/monmort.png
-Categories=Utility;
