@@ -3,7 +3,7 @@
 # heads welcome message and startup stuff
 # https://www.mankier.com/1/yad
 
-#gpg --quiet --import /usr/share/heads/fa1b0274.asc
+cat /usr/share/heads/fa1b0274.asc | gpg --quiet --import
 
 yad \
 	--title="Welcome!" \
