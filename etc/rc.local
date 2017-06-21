@@ -10,8 +10,14 @@ for i in $(cat /proc/cmdline); do
 done
 
 case "$wm" in
-	awesome) cp /usr/share/heads/awesome.xinitrc /home/luther/.xinitrc ;;
-	*)       cp /usr/share/heads/openbox.xinitrc /home/luther/.xinitrc ;;
+	awesome)
+		cp /usr/share/heads/awesome.xinitrc /home/luther/.xinitrc
+		cp /usr/share/heads/welcome-awesome.txt /usr/share/heads/welcome.txt
+		;;
+	*)
+		cp /usr/share/heads/openbox.xinitrc /home/luther/.xinitrc
+		cp /usr/share/heads/welcome-openbox.txt /usr/share/heads/welcome.txt
+		;;
 esac
 
 exit 0

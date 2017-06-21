@@ -1,0 +1,16 @@
+
+Welcome to heads! The version you are using is: 0.3
+I hope this finds you well :)
+
+To begin using heads, you can right-click anywhere on the desktop to
+open a menu which allows you to easily run applications. You can also
+run applications using the prompt by pressing MODKEY+r.
+
+To connect to the Internet, try using Wicd. You can find the tray icon
+on the upper-left of the screen, just next to the date and time.
+
+If you want to help with making heads work better on your hardware,
+please run 'heads-generate-debug' as root, and email the generated
+encrypted tarball to <parazyd@dyne.org>
+
+Thank you, and enjoy!
