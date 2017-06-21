@@ -3,7 +3,7 @@
 # this script will update the rootfs when executed,
 # overwriting any existing changes
 
-apt-get update && apt-get upgrade
+#apt-get update && apt-get upgrade
 
 git fetch --all && git reset --hard origin/master
 [ -f /tmp/update-hooks/new ] && . /tmp/update-hooks/new
