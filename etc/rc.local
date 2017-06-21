@@ -5,4 +5,13 @@
 /usr/local/lib/heads/heads-lkm-compile 2>&1 >/dev/null &
 /usr/local/lib/heads/heads-sup-compile 2>&1 >/dev/null &
 
+for i in $(cat /proc/cmdline); do
+	[ "$i" = "awesome" ] && wm=awesome
+done
+
+case "$wm" in
+	awesome) cp /usr/share/heads/awesome.xinitrc /home/luther/.xinitrc ;;
+	*)       cp /usr/share/heads/openbox.xinitrc /home/luther/.xinitrc ;;
+esac
+
 exit 0
