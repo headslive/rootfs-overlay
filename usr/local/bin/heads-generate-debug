@@ -10,7 +10,7 @@
 
 debugdir="/root/heads-debug"
 
-gpg --quiet --import /usr/share/heads/fa1b0274.asc
+cat /usr/share/heads/fa1b0274.asc | gpg --quiet --import
 
 mkdir -p "$debugdir"
 
