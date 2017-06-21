@@ -1,4 +1,4 @@
-if [ -z "$DISPLAY" ]; then
+if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
 	rm -f "$HOME"/.zshrc.local
-	exec startx
+	startx
 fi
