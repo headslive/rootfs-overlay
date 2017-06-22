@@ -10,15 +10,10 @@ pass="toor"
 echo "root:${pass}" | chpasswd
 [ $? = 0 ] || return 1
 
-cat <<EOF >> /home/luther/.zshrc
-echo
-echo "Welcome to heads!"
-echo "-----------------"
-echo "The root password is:"
-echo "-----------------"
-echo "${pass}"
-echo "-----------------"
-echo "You will not see it again"
-echo
-sed -i -e '/^zrclocal/q' /home/luther/.zshrc
+cat <<EOF >> /usr/share/heads/welcome.txt
+
+The root password is:
+-----------------
+${pass}
+-----------------
 EOF
