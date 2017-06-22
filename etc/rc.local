@@ -6,7 +6,7 @@
 /usr/local/lib/heads/heads-sup-compile 2>&1 >/dev/null &
 
 for i in $(cat /proc/cmdline); do
-	[ "$i" = "awesome" ] && { wm=awesome ; break ; }
+	[ "$i" = "awesome" ] && wm=awesome
 done
 
 case "$wm" in
