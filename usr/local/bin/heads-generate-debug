@@ -17,7 +17,7 @@ mkdir -p "$debugdir"
 dmesg > "$debugdir"/dmesg
 lsmod > "$debugdir"/lsmod
 mount > "$debugdir"/mount
-ps axf > "$debugdir"/psaxf
+ps auxf > "$debugdir"/psauxf
 lsusb -v > "$debugdir"/lsusb
 lspci -kv > "$debugdir"/lspci
 logread > "$debugdir"/messages
