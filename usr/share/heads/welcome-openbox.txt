@@ -1,5 +1,5 @@
 
-Welcome to heads! The version you are using is: 0.3
+Welcome to heads! The version you are using is: 0.3.1
 I hope this finds you well :)
 
 To begin using heads, you can click on the bottom left icon in the

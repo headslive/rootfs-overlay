@@ -1,0 +1,6 @@
+#!/bin/sh
+
+cp -f /usr/share/heads/awesome.xinitrc /home/luther/.xinitrc
+cp -f /usr/share/heads/welcome-awesome.txt /home/luther/welcome.txt
+
+exec startx

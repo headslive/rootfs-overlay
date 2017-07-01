@@ -1,0 +1,6 @@
+#!/bin/sh
+
+cp -f /usr/share/heads/openbox.xinitrc /home/luther/.xinitrc
+cp -f /usr/share/heads/welcome-openbox.txt /home/luther/welcome.txt
+
+exec startx

@@ -11,14 +11,20 @@ echo "root:${pass}" | chpasswd
 [ $? = 0 ] || return 1
 
 cat <<EOF >> /home/luther/.zshrc
-echo
-echo "Welcome to heads!"
-echo "-----------------"
-echo "The root password is:"
-echo "-----------------"
-echo "${pass}"
-echo "-----------------"
-echo "You will not see it again"
-echo
+clear
+cat <<EOM
+	Welcome to heads!
+
+
+* To start the graphical interface, run 'startx'
+  Default is the entry you have booted. You can switch them by
+  running 'startopenbox' or 'startawesome'.
+
+* The root login password (without the quotes) is: '${pass}'
+
+* The password will not be shown again.
+
+
+EOM
 sed -i -e '/^zrclocal/q' /home/luther/.zshrc
 EOF

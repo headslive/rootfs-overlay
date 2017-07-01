@@ -17,4 +17,4 @@ yad \
 	--width=640 \
 	--height=280 \
 	--wrap \
-	--filename="/usr/share/heads/welcome.txt"
+	--filename="/home/luther/welcome.txt"
