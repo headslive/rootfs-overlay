@@ -13,6 +13,8 @@ echo "root:${pass}" | chpasswd
 cat <<EOF >> /home/luther/.zshrc
 clear
 cat <<EOM
+
+
 	Welcome to heads!
 
 
