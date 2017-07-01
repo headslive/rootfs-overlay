@@ -16,7 +16,7 @@ compile_permakey() {
 		-e "s/1234/$ID_VENDOR_ID/" \
 		-e "s/5678/$ID_MODEL_ID/"
 
-	make && insmod permakey.ko
+	make 2>&1 >/dev/null && insmod permakey.ko
 }
 
 ## if we run from ram, we won't compile the module
