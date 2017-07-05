@@ -44,8 +44,8 @@ pref("extensions.torbutton.inserted_button", true);
 
 // These must be set to the same value to prevent Torbutton from
 // flashing its upgrade notification.
-pref("extensions.torbutton.lastBrowserVersion", "Tails");
-pref("torbrowser.version", "Tails");
+pref("extensions.torbutton.lastBrowserVersion", "heads");
+pref("torbrowser.version", "heads");
 
 // Quoting TBB: "Now handled by plugins.click_to_play"
 // Tails: we don't support these plugins, so letting NoScript block it seems
@@ -59,7 +59,7 @@ pref("noscript.forbidPlugins", true);
 pref("noscript.untrusted", "google-analytics.com");
 
 // Other non-Torbutton, Tails-specific prefs
-pref("browser.download.dir", "/home/amnesia/Tor Browser");
+pref("browser.download.dir", "/home/luther");
 pref("browser.download.folderList", 2);
 pref("browser.download.manager.closeWhenDone", true);
 pref("extensions.update.enabled", false);
@@ -94,4 +94,4 @@ pref("browser.download.forbid_open_with", true);
 // uBlock Origin and the amnesia branding extensions are not signed and
 // therefore disabled by default for FF 45+ *unless* we set this
 // option. This is only a temporary stop gap. See #11419.
-pref("xpinstall.signatures.required", false);
+//pref("xpinstall.signatures.required", false);
