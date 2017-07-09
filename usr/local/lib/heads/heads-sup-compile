@@ -4,6 +4,7 @@ SUPSRC="/usr/src/sup"
 
 BINS="
 	/usr/local/bin/heads-init
+	/usr/local/bin/heads-generate-debug
 "
 
 printsettings() {

@@ -3,6 +3,8 @@
 # this script will generate a en encrypted tarball which you will then
 # be able to send to me for examination
 
+PATH="/usr/bin:/usr/sbin:/bin:/sbin"
+
 [ "$(whoami)" = root  ] || {
 	printf "you should run this as root!\n"
 	exit 1
