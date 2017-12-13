@@ -6,4 +6,4 @@
 #apt-get update && apt-get upgrade
 
 git fetch --all && git reset --hard origin/master
-[ -f /tmp/update-hooks/new ] && . /tmp/update-hooks/new
+[ -f /var/lib/heads/update ] && . /var/lib/heads/update
