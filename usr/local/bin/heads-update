@@ -5,5 +5,10 @@
 
 #apt-get update && apt-get upgrade
 
+KEYRING=/usr/share/heads/heads-keyring.gpg
+
 git fetch --all && git reset --hard origin/master
-[ -f /var/lib/heads/update ] && . /var/lib/heads/update
+[ -f /var/lib/heads/update ] && {
+	gpgv --keyring "$KEYRING" /var/lib/heads/update.asc /var/lib/heads/update || exit 1
+	. /var/lib/heads/update
+}
