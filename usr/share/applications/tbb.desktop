@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Tor Browser
-Comment=Tor Browser is +1 for privacy and -1 for mass surceillance
+Comment=Tor Browser is +1 for privacy and -1 for mass surveillance
 Exec=/usr/local/bin/tor-browser %u
 Icon=/usr/local/lib/tor-browser/browser/icons/mozicon128.png
 Type=Application
