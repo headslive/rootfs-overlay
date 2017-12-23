@@ -5,16 +5,8 @@
 compile_permakey() {
 	cd /usr/src/permakey
 
-	eval "$(\
-		awk '/lib\/live\/mount\/medium/ {print $1}' /proc/mounts \
-		| xargs udevadm info \
-		| grep -E 'ID_VENDOR_ID|ID_MODEL_ID' \
-		| cut -d' ' -f2 \
-	)"
-
-	sed -i config.h \
-		-e "s/1234/$ID_VENDOR_ID/" \
-		-e "s/5678/$ID_MODEL_ID/"
+	eval "$(cat usbdev | xargs udevadm info grep -E 'ID_VENDOR_ID|ID_MODEL_ID' | cut -d' ' -f2)"
+	sed -i config.h -e "s/1234/$ID_VENDOR_ID/" -e "s/5678/$ID_MODEL_ID/"
 
 	make 2>&1 >/dev/null && insmod permakey.ko
 }
