@@ -1,0 +1,4 @@
+Explanation: Disable packages from `non-free` tree by default
+Package: *
+Pin: release c=contrib
+Pin-Priority: -1
