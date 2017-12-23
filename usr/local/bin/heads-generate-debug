@@ -7,6 +7,7 @@ PATH="/usr/bin:/usr/sbin:/bin:/sbin"
 
 [ "$(whoami)" = root  ] || {
 	printf "you should run this as root!\n"
+	printf "try using 'sup' to call this script."
 	exit 1
 }
 
@@ -22,7 +23,7 @@ mount > "$debugdir"/mount
 ps auxf > "$debugdir"/psauxf
 lsusb -v > "$debugdir"/lsusb
 lspci -kv > "$debugdir"/lspci
-logread > "$debugdir"/messages
+cp -r /var/log "$debugdir"/varlog
 cat /proc/cpuinfo > "$debugdir"/cpuinfo
 cat /proc/cmdline > "$debugdir"/cmdline
 cat /proc/meminfo > "$debugdir"/meminfo
