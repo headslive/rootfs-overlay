@@ -5,7 +5,6 @@ SocksPort 127.0.0.1:9062 IsolateDestAddr IsolateDestPort
 SocksPort 127.0.0.1:9150 IsolateSOCKSAuth KeepAliveIsolateSOCKSAuth
 
 ControlPort 9052
-ControlListenAddress 127.0.0.1
 
 ## Torified DNS
 DNSPort 5353
@@ -14,7 +13,6 @@ AutomapHostsSuffixes .exit,.onion
 
 ## Transparent proxy
 TransPort 9040
-TransListenAddress 127.0.0.1
 
 ## Misc
 AvoidDiskWrites 1
