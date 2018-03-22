@@ -6,6 +6,8 @@
 # heads initial setup
 # Inspired by the Tails welcome screen.
 
+rm -f /etc/sudoers.d/heads-welcome
+
 data="$(yad \
 	--title="Welcome to heads!" \
 	--text="Welcome to heads!

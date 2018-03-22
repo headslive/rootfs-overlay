@@ -5,6 +5,9 @@
 /usr/local/lib/heads/heads-lkm-compile 2>&1 >/dev/null &
 /usr/local/lib/heads/heads-sup-compile 2>&1 >/dev/null &
 
+echo "luther heads = NOPASSWD: /usr/local/lib/heads/heads-welcome" \
+	> /etc/sudoers.d/heads-welcome
+
 for i in $(cat /proc/cmdline); do
 	[ "$i" = "awesome" ] && wm=awesome
 done

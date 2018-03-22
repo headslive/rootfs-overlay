@@ -1,7 +1,8 @@
 #!/bin/sh
 
+sudo /usr/local/lib/heads/heads-welcome
+
 lxpanel &
-heads-welcome &
 pcmanfm --desktop &
 
 exec openbox-session
