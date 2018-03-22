@@ -1,0 +1,2 @@
+syn on
+set mouse=
