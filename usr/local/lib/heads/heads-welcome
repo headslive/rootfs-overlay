@@ -18,13 +18,35 @@ environment. Select any option below to proceed." \
 	--field="Select a keyboard layout":FBTN "/usr/local/lib/heads/heads-keymap" \
 	--field="Set the computer language (locale)":FBTN "/usr/local/lib/heads/heads-locale" \
 	--field="Change the root password":FBTN "/usr/local/lib/heads/heads-rootpw" \
+	--field="":LBL \
 	--field="Miscellaneous options:":LBL \
 	--field="Randomize MAC addresses of network interfaces": CHK macaddr TRUE \
 	--button="Shutdown":1 \
 	--button="Start heads":0
 )"
 
-# 0: randomize mac
-for i in $data ; do
-	echo "$i"
+# Shut down on unsuccessful exit.
+#[ $? = 0 ] || init 0
+
+# $data:
+# 0: layout
+# 1: locale
+# 2: rootpw
+# 3: n/a
+# 4: n/a
+# 5: macaddr
+i=-1
+echo "$data" | tr ':' '\n' | while read val; do
+	i=$(( $i + 1 ))
+	case "$i" in
+		5)
+			[ "$val" = TRUE ] || continue
+			cp -f /usr/local/share/heads/wicd-preconn \
+				/etc/wicd/scripts/preconnect/macchange
+			chmod 755 /etc/wicd/scripts/preconnect/macchange
+			;;
+		*)
+			continue
+			;;
+	esac
 done
