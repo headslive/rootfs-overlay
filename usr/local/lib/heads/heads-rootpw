@@ -10,8 +10,8 @@ input_pw() {
 		--no-escape \
 		--center \
 		--fixed \
-		--width=280 \
-		--height=160 \
+		--width=360 \
+		--height=80 \
 		--entry \
 		--button="Accept":0
 }
