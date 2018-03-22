@@ -13,9 +13,14 @@ cd - >/dev/null
 
 sel_layout() {
 	yad \
-		--text="Please select your prefered keyboard layout." \
+		--text="Please select your prefered keyboard layout.
+(Start typing to search)" \
 		--no-escape \
 		--listen \
+		--width=360 \
+		--height=360 \
+		--fixed \
+		--button="Accept":0 \
 		--center \
 		--list \
 		--title="heads keyboard layout" \
@@ -29,4 +34,5 @@ sel=""
 while [ -z "$sel" ]; do
 	sel="$(printf "%s\n" "$klist" | sel_layout)"
 done
-printf "%s\n" "$sel"
+#printf "%s\n" "$sel"
+setxkbmap -layout "$sel"
