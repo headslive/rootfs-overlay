@@ -22,7 +22,7 @@ environment. Select any option below to proceed." \
 	--field="Change the root password":FBTN "/usr/local/lib/heads/heads-rootpw" \
 	--field="":LBL \
 	--field="Miscellaneous options:":LBL \
-	--field="Randomize MAC addresses of network interfaces": CHK macaddr TRUE \
+	--field="Randomize MAC addresses of network interfaces":CHK macaddr TRUE \
 	--button="Shutdown":1 \
 	--button="Start heads":0
 )"
