@@ -1,0 +1,32 @@
+#!/bin/sh
+#
+# Copyright (c) 2016-2018 Ivan J. <parazyd@dyne.org>
+# See LICENSE file for copyright and license details.
+#
+# Select a keyboard layout.
+
+kmps="/usr/share/X11/xkb/symbols"
+
+cd "$kmps"
+klist="$(find *)"
+cd - >/dev/null
+
+sel_layout() {
+	yad \
+		--text="Please select your prefered keyboard layout." \
+		--no-escape \
+		--listen \
+		--center \
+		--list \
+		--title="heads keyboard layout" \
+		--separator="\n" \
+		--column="Layout Name" \
+		--search-column=1 \
+		--print-column=1
+}
+
+sel=""
+while [ -z "$sel" ]; do
+	sel="$(printf "%s\n" "$klist" | sel_layout)"
+done
+printf "%s\n" "$sel"

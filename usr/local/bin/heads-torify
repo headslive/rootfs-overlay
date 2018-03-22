@@ -1,5 +1,8 @@
 #!/bin/sh
 #
+# Copyright (c) 2016-2018 Ivan J. <parazyd@dyne.org>
+# See LICENSE file for copyright and license details.
+#
 # experimental rude torifying
 
 flush_iptables() {

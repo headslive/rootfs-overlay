@@ -1,6 +1,6 @@
 #!/bin/sh
 
-nitrogen --restore &
+nitrogen --restore
 wicd-gtk -t &
 heads-welcome &
 

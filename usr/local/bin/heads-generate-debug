@@ -1,6 +1,9 @@
 #!/bin/sh
 #
-# this script will generate a en encrypted tarball which you will then
+# Copyright (c) 2016-2018 Ivan J. <parazyd@dyne.org>
+# See LICENSE file for copyright and license details.
+#
+# this script will generate an encrypted tarball which you will then
 # be able to send to me for examination
 
 PATH="/usr/bin:/usr/sbin:/bin:/sbin"

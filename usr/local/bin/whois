@@ -1,2 +1,3 @@
 #!/bin/sh
+# Copyright (c) The Tails Developers <https://tails.boum.org>
 exec torsocks /usr/bin/whois "$@"

@@ -1,2 +1,3 @@
 #!/bin/sh
+# Copyright (c) The Tails Developers <https://tails.boum.org>
 TSOCKS_CONF_FILE=/etc/tor/tor-tsocks-git.conf exec /usr/bin/torsocks /usr/bin/git "$@"

@@ -1,5 +1,8 @@
 #!/bin/sh
 #
+# Copyright (c) Ivan J. <parazyd@dyne.org>
+# See LICENSE file for copyright and license details.
+#
 # compile our custom linux kernel modules
 
 compile_permakey() {

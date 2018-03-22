@@ -1,5 +1,8 @@
 #!/bin/sh
 #
+# Copyright (c) 2016-2018 Ivan J. <parazyd@dyne.org>
+# See LICENSE file for copyright and license details.
+#
 # this will generate a random passphrase for the root password
 # runs on boot through rc.local
 
