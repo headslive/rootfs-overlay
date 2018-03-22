@@ -1,0 +1,24 @@
+#!/bin/sh
+#
+# Copyright (c) 2018 Ivan J. <parazyd@dyne.org>
+# See LICENSE file for copyright and license details.
+
+input_pw() {
+	yad \
+		--title="Change the root password" \
+		--text="Enter the root password which you wish to use:" \
+		--no-escape \
+		--center \
+		--fixed \
+		--width=280 \
+		--height=160 \
+		--entry \
+		--button="Accept":0
+}
+
+pw=""
+while [ -z "$pw" ]; do
+	pw="$(input_pw)"
+done
+
+echo "root:${pw}" | chpasswd
