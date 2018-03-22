@@ -1,0 +1,29 @@
+#!/bin/sh
+#
+# Copyright (c) 2018 Ivan J. <parazyd@dyne.org>
+# See LICENSE file for copyright and license details.
+#
+# Select locales to generate.
+
+locs="$(grep ' UTF-8$' /etc/locale.gen | tr -d '#' | awk '{print $1}')"
+
+chosen="$(printf "%s\n" "$locs" | yad \
+	--title="heads' locale" \
+	--text="Select your prefered locale. (Choose multiple by holding down Ctrl)" \
+	--no-escape \
+	--listen \
+	--center \
+	--list \
+	--multiple \
+	--button="Accept":0 \
+	--separator="\n" \
+	--column="Locale Name" \
+	--search-column=1 \
+	--print-column=1 | sed '/^$/d')"
+
+for i in $chosen; do
+	echo "$i UTF-8" >> /etc/locale.gen
+done
+locale-gen
+
+# TODO: Ask for a prefered locale and set it in /etc/profile.d
