@@ -1,4 +1,7 @@
 #!/bin/sh
+#
+# Copyright (c) 2016-2018 Ivan J. <parazyd@dyne.org>
+# See LICENSE file for copyright and license details.
 
 /bin/udevadm hwdb --update &
 /usr/local/lib/heads/heads-generate-passphrase
