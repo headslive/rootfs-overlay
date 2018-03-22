@@ -1,12 +1,20 @@
 ## package repositories
-#deb http://pkgmaster.devuan.org/merged unstable     main
+#deb http://pkgmaster.devuan.org/merged beowulf main
+#deb http://pkgmaster.devuan.org/merged beowulf-updates main
+#deb http://pkgmaster.devuan.org/merged beowulf-security main
 #deb http://pkgmaster.devuan.org/devuan experimental main
 
-deb tor+http://devuanfwojg73k6r.onion/merged unstable     main
+deb tor+http://devuanfwojg73k6r.onion/merged beowulf main
+deb tor+http://devuanfwojg73k6r.onion/merged beowulf-updates main
+deb tor+http://devuanfwojg73k6r.onion/merged beowulf-security main
 deb tor+http://devuanfwojg73k6r.onion/devuan experimental main
 
-#deb-src http://pkgmaster.devuan.org/merged unstable     main
+#deb-src http://pkgmaster.devuan.org/merged beowulf main
+#deb-src http://pkgmaster.devuan.org/merged beowulf-updates main
+#deb-src http://pkgmaster.devuan.org/merged beowulf-security main
 #deb-src http://pkgmaster.devuan.org/devuan experimental main
 
-#deb-src tor+http://devuanfwojg73k6r.onion/merged unstable     main
+#deb-src tor+http://devuanfwojg73k6r.onion/merged beowulf main
+#deb-src tor+http://devuanfwojg73k6r.onion/merged beowulf-updates main
+#deb-src tor+http://devuanfwojg73k6r.onion/merged beowulf-security main
 #deb-src tor+http://devuanfwojg73k6r.onion/devuan experimental main
