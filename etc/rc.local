@@ -11,12 +11,12 @@ done
 
 case "$wm" in
 	awesome)
-		cp /usr/share/heads/awesome.xinitrc /home/luther/.xinitrc
-		cp /usr/share/heads/welcome-awesome.txt /home/luther/welcome.txt
+		cp /usr/local/share/heads/awesome.xinitrc /home/luther/.xinitrc
+		cp /usr/local/share/heads/welcome-awesome.txt /home/luther/welcome.txt
 		;;
 	*)
-		cp /usr/share/heads/openbox.xinitrc /home/luther/.xinitrc
-		cp /usr/share/heads/welcome-openbox.txt /home/luther/welcome.txt
+		cp /usr/local/share/heads/openbox.xinitrc /home/luther/.xinitrc
+		cp /usr/local/share/heads/welcome-openbox.txt /home/luther/welcome.txt
 		;;
 esac
 

@@ -6,12 +6,12 @@
 # heads welcome message and startup stuff
 # https://www.mankier.com/1/yad
 
-cat /usr/share/heads/fa1b0274.asc | gpg --quiet --import
+cat /usr/local/share/heads/fa1b0274.asc | gpg --quiet --import
 
 yad \
 	--title="Welcome!" \
 	--text-info \
-	--image="/usr/share/heads/mouse.png" \
+	--image="/usr/local/share/heads/mouse.png" \
 	--button=OK:0 \
 	--buttons-layout=spread \
 	--fontname="Liberation Sans regular 10" \

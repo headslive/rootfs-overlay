@@ -8,7 +8,7 @@
 
 #apt-get update && apt-get upgrade
 
-KEYRING=/usr/share/heads/heads-keyring.gpg
+KEYRING=/usr/local/share/heads/heads-keyring.gpg
 
 git fetch --all && git reset --hard origin/master
 [ -f /var/lib/heads/update ] && {

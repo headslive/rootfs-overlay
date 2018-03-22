@@ -5,7 +5,7 @@
 
 -- {{{ Main
 local theme = {}
-theme.wallpaper = "/usr/share/heads/wallpapers/current.jpg"
+theme.wallpaper = "/usr/local/share/heads/wallpapers/current.jpg"
 -- }}}
 
 -- {{{ Styles

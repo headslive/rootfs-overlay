@@ -16,7 +16,7 @@ PATH="/usr/bin:/usr/sbin:/bin:/sbin"
 
 debugdir="/root/heads-debug"
 
-cat /usr/share/heads/fa1b0274.asc | gpg --quiet --import
+cat /usr/local/share/heads/fa1b0274.asc | gpg --quiet --import
 
 mkdir -p "$debugdir"
 
