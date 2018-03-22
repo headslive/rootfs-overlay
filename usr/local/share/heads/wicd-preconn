@@ -1,0 +1,17 @@
+#!/bin/sh
+#
+# Copyright (c) 2018 Ivan J. <parazyd@dyne.org>
+# See LICENSE file for copyright and license details.
+#
+# Randomize MAC for wicd.
+#
+# $1 is connection type
+# $LOGICAL is passed through env by wicd
+
+case "$1" in
+	wired|wireless)
+		ip link set $LOGICAL down
+		macchanger -A $LOGICAL
+		ip link set $LOGICAL up
+		;;
+esac
