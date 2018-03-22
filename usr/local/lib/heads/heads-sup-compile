@@ -3,61 +3,20 @@
 # Copyright (c) 2016-2018 Ivan J. <parazyd@dyne.org>
 # See LICENSE file for copyright and license details.
 
-SUPSRC="/usr/src/sup"
+cd /usr/src/sup
 
-BINS="
-	/usr/local/bin/heads-init
-	/usr/local/bin/heads-generate-debug
-"
-
-printsettings() {
-	cat <<EOF
-/* sup's configuration file */
-
-#define HASH 1
-#define DAEMON 0
-
-#ifndef FLAGSONLY
-
-#define USER 1000
-#define GROUP -1
-
+cat <<EOF > config.h
 #define SETUID 0
 #define SETGID 0
 
-#define CHROOT ""
-#define CHRDIR ""
-
 static struct rule_t rules[] = {
-	/* allow user to run these programs when found in path location */
-EOF
-}
 
-printrest() {
-	cat <<EOF
+	{ 1000, "heads-init", "/usr/local/bin/heads-init",
+		"$(sha256sum /usr/local/bin/heads-init | cut -d' ' -f1)" },
 
-	{ 0 },
+	{ 1000, "heads-generate-debug", "/usr/local/bin/heads-generate-debug",
+		"$(sha256sum /usr/local/bin/heads-generate-debug | cut -d ' ' -f1)" },
 };
-
-#endif
 EOF
-}
 
-getsha() {
-	sha256sum "$1" | cut -d' ' -f1
-}
-
-cd $SUPSRC
-
-printsettings > config.h
-
-for exe in $BINS; do
-	which "$exe" >/dev/null 2>&1 || continue
-	printf "\t{ USER, GROUP, \"%s\", \"%s\", \"%s\" },\n" \
-		"$(basename $exe)" "$exe" "$(getsha $exe)" >> config.h
-done
-
-printrest >> config.h
-
-CFLAGS="-Os -fPIE -fstack-protector-all" LDFLAGS="-s -pie" \
-	make musl && make install
+make clean install

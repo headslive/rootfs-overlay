@@ -1,33 +1,27 @@
-// sup's configuration file
-// need sup to be re-compiled for any change to be effective
+/* See LICENSE file for copyright and license details. */
 
-/// un/comment flags below to remove functionalities
-#define HASH 1
-#define DAEMON 1
-// #define DEBUG 1
-
-#ifndef FLAGSONLY
-
-#define USER 1000
-#define GROUP -1
-
+/* user and group to run as */
 #define SETUID 0
 #define SETGID 0
 
-#define CHROOT ""
-#define CHRDIR ""
-
+/* sup authorizations
+ *
+ * the format is as follows:
+ * - uid allowed to run the command (-1 means anyone)
+ * - alias/command used to call the executable
+ * - path to the executable to run
+ * - sha256 checksum of the executable
+ */
 static struct rule_t rules[] = {
-    // allow user to run these programs when found in path location
-    { USER, GROUP, "whoami",   "/usr/bin/whoami", "" },
-    { USER, GROUP, "ifconfig", "/sbin/ifconfig",  "" },
-    { USER, GROUP, "ls",       "/bin/ls",         "" },
-    { USER, GROUP, "wifi",     "/root/wifi.sh",   "" },
+	{ 1000, "ls", "/bin/ls",
+		"87e8fd7d813c135875aca43a4da43d3ced41d325ed2931906444471b4e93e017" },
 
-    // allow to run this program when found in PATH */
-    { USER, GROUP, "id", "*", "db533b77fc9e262209a46e0fe5bec646c1d2ed4e33285dc61da09dbc4caf6fa6" },
-    /* { USER, GROUP, "*", "*"}, // allow to run any program found in PATH */
-    { 0 },
+	{ -1, "grep", "/bin/grep",
+		"fedeb344d1be24f4a340591cd25ed81f7e46ea12772f563c9c9f43773028e23a" },
+
+	{ 1000, "tar", "/bin/tar",
+		"fedeb344d1be24f4a340591cd25ed81f7e46ea12772f563c9c9f43773028e23a" },
+
+	{ 1001, "test", "./a.out",
+		"254260b676a44f1529f7c855f0126a57a3fbd7ec8a74de08835f08e8e6ed21be" },
 };
-
-#endif

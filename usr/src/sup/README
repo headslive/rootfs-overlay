@@ -1,0 +1,51 @@
+sup - scale user privileges
+===========================
+sup is a small and secure tool used for privilege escalation.
+
+
+Requirements
+------------
+C99 compiler. sup is statically linked, so there are no runtime
+dependencies.
+
+
+Installation
+------------
+Edit config.mk to match your local setup (sup is installed into
+the /usr/local namespace by default).
+
+Afterwards enter the following command to build and install sup
+as root:
+
+	make clean install
+
+Further on, edit config.h and fill the correct information that
+is related to your needs. When done, just recompile and install
+sup again to make the changes effective.
+
+
+Usage
+-----
+$ sup [-l] [cmd [arg ...]]
+
+The -l flag will list authorizations that are currently found
+in the compiled binary.
+
+Other params will then execute the command if it's allowed and
+found in the rules struct found in config.h.
+
+
+Similar software
+----------------
+calife  - https://www.keltia.net/programs/calife/
+doas    - https://man.openbsd.org/doas
+gosu    - https://github.com/tianon/gosu/
+su-exec - https://github.com/ncopa/su-exec/
+sup     - https://sup.dyne.org
+vsys    - http://www.sapanbhatia.org/vsys/
+
+
+Acknowledgements
+----------------
+Jaromil for inspiration and parts of the code.
+Cristophe Devine for the sha256 code.
