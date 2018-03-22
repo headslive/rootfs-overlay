@@ -1,0 +1,30 @@
+#!/bin/sh
+#
+# Copyright (c) 2016-2018 Ivan J. <parazyd@dyne.org>
+# See LICENSE file for copyright and license details.
+#
+# heads initial setup
+# Inspired by the Tails welcome screen.
+
+data="$(yad \
+	--title="Welcome to heads!" \
+	--text="Welcome to heads!
+Here you can choose to customize your system before starting the graphical
+environment. Select any option below to proceed." \
+	--form \
+	--columns=1 \
+	--center \
+	--no-escape \
+	--field="Select a keyboard layout":FBTN "/usr/local/lib/heads/heads-keymap" \
+	--field="Set the computer language (locale)":FBTN "/usr/local/lib/heads/heads-locale" \
+	--field="Change the root password":FBTN "/usr/local/lib/heads/heads-rootpw" \
+	--field="Miscellaneous options:":LBL \
+	--field="Randomize MAC addresses of network interfaces": CHK macaddr TRUE \
+	--button="Shutdown":1 \
+	--button="Start heads":0
+)"
+
+# 0: randomize mac
+for i in $data ; do
+	echo "$i"
+done
