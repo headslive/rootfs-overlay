@@ -150,9 +150,10 @@ Plugin {
     LayoutsList=us,hr,cn,gb,fr,de,it,ru,rs
     VariantsList=,,,,,,,,
     ToggleOpt=grp:shift_caps_toggle
-    KeepSysLayouts=0
+    KeepSysLayouts=1
     FlagSize=1
     DisplayType=1
+    NoResetOpt=1
   }
 }
 
