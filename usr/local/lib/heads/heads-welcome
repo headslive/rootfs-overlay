@@ -18,10 +18,10 @@ environment. Select any option below to proceed." \
 	--center \
 	--no-escape \
 	--separator=":" \
-	--field="Select a keyboard layout":FBTN \
-	--field="Set the computer language (locale)":FBTN \
-	--field="Set the timezone":FBTN \
-	--field="Change the root password":FBTN \
+	--field="Select a keyboard layout!preferences-desktop-keyboard-symbolic":FBTN \
+	--field="Set the computer language (locale)!preferences-desktop-locale-symbolic":FBTN \
+	--field="Set the timezone!preferences-system-time-symbolic":FBTN \
+	--field="Change the root password!system-users-symbolic":FBTN \
 	--field="":LBL \
 	--field="Miscellaneous options:":LBL \
 	--field="Randomize MAC addresses of network interfaces":CHK \
