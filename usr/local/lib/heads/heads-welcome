@@ -19,6 +19,7 @@ environment. Select any option below to proceed." \
 	--no-escape \
 	--field="Select a keyboard layout":FBTN "/usr/local/lib/heads/heads-keymap" \
 	--field="Set the computer language (locale)":FBTN "/usr/local/lib/heads/heads-locale" \
+	--field="Set the timezone":FBTN "/usr/local/lib/heads/heads-tz" \
 	--field="Change the root password":FBTN "/usr/local/lib/heads/heads-rootpw" \
 	--field="":LBL \
 	--field="Miscellaneous options:":LBL \
@@ -33,15 +34,16 @@ environment. Select any option below to proceed." \
 # $data:
 # 0: layout
 # 1: locale
-# 2: rootpw
-# 3: n/a
+# 2: timezone
+# 3: rootpw
 # 4: n/a
-# 5: macaddr
+# 5: n/a
+# 6: macaddr
 i=-1
 echo "$data" | tr ':' '\n' | while read val; do
 	i=$(( $i + 1 ))
 	case "$i" in
-		5)
+		6)
 			[ "$val" = TRUE ] || continue
 			cp -f /usr/local/share/heads/wicd-preconn \
 				/etc/wicd/scripts/preconnect/macchange

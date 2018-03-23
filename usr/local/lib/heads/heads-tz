@@ -1,0 +1,31 @@
+#!/bin/sh
+#
+# Copyright (c) 2018 Ivan J. <parazyd@dyne.org>
+# See LICENSE file for copyright and license details.
+#
+# Select timezone
+
+cd /usr/share/zoneinfo
+zones="$(find * -type f -name '[A-Z]*' | grep -Ev '^right|^posix')"
+
+chosen="$(printf "%s\n" "$zones" | yad \
+	--title="heads' timezone" \
+	--text="Select your prefered timezone.
+(Start typing to search)" \
+	--no-escape \
+	--listen \
+	--width=360 \
+	--height=360 \
+	--fixed \
+	--center \
+	--list \
+	--button="Accept":0 \
+	--separator="\n" \
+	--column="Timezone" \
+	--search-column=1 \
+	--print-column=1 | sed '/^$/d')"
+
+[ -n "$chosen" ] || exit 0
+
+ln -snf /usr/share/zoneinfo/$chosen /etc/localtime
+echo "$chosen" > /etc/timezone
