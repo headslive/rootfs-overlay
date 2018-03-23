@@ -26,4 +26,6 @@ case "$wm" in
 		;;
 esac
 
+#su -s /bin/sh -c startx your_user &
+
 exit 0
