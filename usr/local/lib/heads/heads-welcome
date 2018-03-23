@@ -17,6 +17,7 @@ environment. Select any option below to proceed." \
 	--columns=1 \
 	--center \
 	--no-escape \
+	--separator=":" \
 	--field="Select a keyboard layout":FBTN "/usr/local/lib/heads/heads-keymap" \
 	--field="Set the computer language (locale)":FBTN "/usr/local/lib/heads/heads-locale" \
 	--field="Set the timezone":FBTN "/usr/local/lib/heads/heads-tz" \
