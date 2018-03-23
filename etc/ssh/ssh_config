@@ -3,9 +3,7 @@ ProxyCommand none
 
 Host *
 
-ProxyCommand /usr/bin/connect -S localhost:9050 %h %p
-
-ServerAliveInterval 60
+ProxyCommand /bin/nc -X 5 -x 127.0.0.1:9050 %h %p
 
 Compression yes
 CompressionLevel 9
@@ -13,5 +11,8 @@ CompressionLevel 9
 ForwardX11              no
 ForwardX11Trusted       no
 
-# prevent fingerprinting when username was not specified
+# Prevent fingerprinting when username was not specified
 User                    root
+
+# Avoid storing full remote IP / host name connection history in plaintext
+HashKnownHosts          yes

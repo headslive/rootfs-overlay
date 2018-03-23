@@ -1,6 +1,6 @@
 // As suggested in TBB's start-tor-browser script for system-wide Tor
 // instances
-pref("extensions.torbutton.banned_ports", "631,6136,4444,4445,6668,7656,7657,7658,7659,7660,8998,9040,9050,9061,9062,9150,9051");
+pref("extensions.torbutton.banned_ports", "631,6136,4444,4445,6668,7656,7657,7658,7659,7660,8998,9040,9050,9062,9150,9051");
 pref("extensions.torbutton.custom.socks_host", "127.0.0.1");
 pref("extensions.torbutton.custom.socks_port", 9150);
 pref("extensions.torbutton.launch_warning",  false);
@@ -60,6 +60,8 @@ pref("noscript.untrusted", "google-analytics.com");
 
 // Other non-Torbutton, Tails-specific prefs
 pref("browser.download.dir", "/home/luther");
+pref("dom.input.fallbackUploadDir", "/home/luther");
+pref("print.print_to_filename", "/home/luther/output.pdf");
 pref("browser.download.folderList", 2);
 pref("browser.download.manager.closeWhenDone", true);
 pref("extensions.update.enabled", false);
@@ -77,8 +79,8 @@ pref("browser.newtabpage.directory.ping", "");
 pref("browser.newtabpage.introShown", true);
 
 // Don't use geographically specific search prefs, like
-// browser.search.*.US for US locales. Our generated amnesia branding
-// add-on localizes search-engines in an incompatible but equivalent
+// browser.search.*.US for US locales. Our generated localization
+// profiles localizes search-engines in an incompatible but equivalent
 // way.
 pref("browser.search.geoSpecificDefaults", false);
 
@@ -90,8 +92,3 @@ pref("browser.download.panel.shown", true);
 // open external applications, so let's not offer the option to the user,
 // and instead only propose them to save downloaded files.
 pref("browser.download.forbid_open_with", true);
-
-// uBlock Origin and the amnesia branding extensions are not signed and
-// therefore disabled by default for FF 45+ *unless* we set this
-// option. This is only a temporary stop gap. See #11419.
-//pref("xpinstall.signatures.required", false);
