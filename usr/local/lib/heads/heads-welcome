@@ -18,16 +18,22 @@ environment. Select any option below to proceed." \
 	--center \
 	--no-escape \
 	--separator=":" \
-	--field="Select a keyboard layout":FBTN "/usr/local/lib/heads/heads-keymap" \
-	--field="Set the computer language (locale)":FBTN "/usr/local/lib/heads/heads-locale" \
-	--field="Set the timezone":FBTN "/usr/local/lib/heads/heads-tz" \
-	--field="Change the root password":FBTN "/usr/local/lib/heads/heads-rootpw" \
+	--field="Select a keyboard layout":FBTN \
+	--field="Set the computer language (locale)":FBTN \
+	--field="Set the timezone":FBTN \
+	--field="Change the root password":FBTN \
 	--field="":LBL \
 	--field="Miscellaneous options:":LBL \
-	--field="Randomize MAC addresses of network interfaces":CHK macaddr TRUE \
+	--field="Randomize MAC addresses of network interfaces":CHK \
 	--button="Shutdown":1 \
-	--button="Start heads":0
-)"
+	--button="Start heads":0 \
+	"/usr/local/lib/heads/heads-keymap" \
+	"/usr/local/lib/heads/heads-locale" \
+	"/usr/local/lib/heads/heads-tz" \
+	"/usr/local/lib/heads/heads-rootpw" \
+	"n/a" \
+	"n/a" \
+	"TRUE")"
 
 # Shut down on unsuccessful exit.
 #[ $? = 0 ] || init 0
