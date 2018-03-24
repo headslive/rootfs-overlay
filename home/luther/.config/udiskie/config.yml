@@ -1,0 +1,8 @@
+program_options:
+ tray:        true
+ menu:        nested
+ automount:   false
+ notify:      true
+ password_cache: 30
+ #password_cache: false
+ password_prompt: "zenity --entry --hide-text --text 'Enter password for {device_presentation}:'"

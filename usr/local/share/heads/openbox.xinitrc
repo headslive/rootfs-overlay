@@ -10,6 +10,8 @@ sudo /usr/local/lib/heads/heads-welcome
 #start-pulseaudio-x11
 
 lxpanel &
+dunst &
+udiskie &
 pcmanfm --desktop &
 
 exec openbox-session
