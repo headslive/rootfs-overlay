@@ -6,14 +6,19 @@
 input_pw() {
 	yad \
 		--title="Change the root password" \
-		--text="Enter the root password which you wish to use:" \
+		--text="<b>Change the root password</b>
+
+Enter the root password which you wish to use:" \
 		--no-escape \
+		--borders=40 \
+		--image="/usr/share/icons/Adwaita/64x64/apps/system-users-symbolic.symbolic.png" \
+		--image-on-top \
 		--center \
 		--fixed \
 		--width=360 \
-		--height=80 \
+		--height=100 \
 		--entry \
-		--button="Accept":0
+		--button="<b>Accept</b>":0
 }
 
 pw=""

@@ -8,23 +8,37 @@
 kmps="/usr/share/X11/xkb/symbols"
 
 cd "$kmps"
-klist="$(find *)"
+klist="$(find * -type f)"
+_feed=""
+for i in $klist; do
+	_feed="${_feed}${i}
+"
+	_name="$(grep 'name\[Group1\]' $i | head -n1 | cut -d'"' -f2)"
+	_feed="${_feed}${_name}
+"
+done
 cd - >/dev/null
 
 sel_layout() {
 	yad \
-		--text="Please select your prefered keyboard layout.
+		--title="heads keyboard layout" \
+		--text="<b>Select the keyboard layout</b>
+
+Please choose your prefered keyboard layout by selecting it below.
 (Start typing to search)" \
 		--no-escape \
+		--borders=40 \
+		--image="/usr/share/icons/Adwaita/64x64/apps/preferences-desktop-keyboard-symbolic.symbolic.png" \
+		--image-on-top \
 		--listen \
 		--width=360 \
 		--height=360 \
 		--fixed \
-		--button="Accept":0 \
+		--button="<b>Accept</b>":0 \
 		--center \
 		--list \
-		--title="heads keyboard layout" \
 		--separator="\n" \
+		--column="Layout Code" \
 		--column="Layout Name" \
 		--search-column=1 \
 		--print-column=1
@@ -32,7 +46,7 @@ sel_layout() {
 
 sel=""
 while [ -z "$sel" ]; do
-	sel="$(printf "%s\n" "$klist" | sel_layout)"
+	sel="$(printf "%s\n" "$_feed" | sel_layout)"
 done
 #printf "%s\n" "$sel"
 setxkbmap -layout "$sel"

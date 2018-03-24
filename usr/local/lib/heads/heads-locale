@@ -9,10 +9,15 @@ locs="$(grep ' UTF-8$' /etc/locale.gen | tr -d '#' | awk '{print $1}')"
 
 chosen="$(printf "%s\n" "$locs" | yad \
 	--title="heads' locale" \
-	--text="Select your prefered locale.
-(Choose multiple by holding down Ctrl)
+	--text="<b>Select the system locale</b>
+
+Choose below your prefered locale.
+(Select multiple by holding down Ctrl)
 (Start typing to search)" \
 	--no-escape \
+	--borders=40 \
+	--image="/usr/share/icons/Adwaita/64x64/apps/preferences-desktop-locale-symbolic.symbolic.png" \
+	--image-on-top \
 	--listen \
 	--width=360 \
 	--height=360 \
@@ -20,7 +25,7 @@ chosen="$(printf "%s\n" "$locs" | yad \
 	--center \
 	--list \
 	--multiple \
-	--button="Accept":0 \
+	--button="<b>Accept</b>":0 \
 	--separator="\n" \
 	--column="Locale Name" \
 	--search-column=1 \

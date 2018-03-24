@@ -10,16 +10,21 @@ zones="$(find * -type f -name '[A-Z]*' | grep -Ev '^right|^posix')"
 
 chosen="$(printf "%s\n" "$zones" | yad \
 	--title="heads' timezone" \
-	--text="Select your prefered timezone.
+	--text="<b>Select the system timezone</b>
+
+Select below your prefered timezone.
 (Start typing to search)" \
+	--image="/usr/share/icons/Adwaita/64x64/apps/preferences-system-time-symbolic.symbolic.png" \
+	--image-on-top \
 	--no-escape \
 	--listen \
+	--borders=40 \
 	--width=360 \
 	--height=360 \
 	--fixed \
 	--center \
 	--list \
-	--button="Accept":0 \
+	--button="<b>Accept</b>":0 \
 	--separator="\n" \
 	--column="Timezone" \
 	--search-column=1 \

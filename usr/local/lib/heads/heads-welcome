@@ -10,12 +10,17 @@ rm -f /etc/sudoers.d/heads-welcome
 
 data="$(yad \
 	--title="Welcome to heads!" \
-	--text="Welcome to heads!
-Here you can choose to customize your system before starting the graphical
-environment. Select any option below to proceed." \
+	--text="<big><b>Welcome to heads!</b></big>
+Here you can choose to customize your system before starting the graphical environment.
+Select any option below to proceed.
+	" \
 	--form \
 	--columns=1 \
+	--borders=40 \
 	--center \
+	--width=640 \
+	--height=480 \
+	--fixed \
 	--no-escape \
 	--separator=":" \
 	--field="Select a keyboard layout!preferences-desktop-keyboard-symbolic":FBTN \
@@ -23,17 +28,19 @@ environment. Select any option below to proceed." \
 	--field="Set the timezone!preferences-system-time-symbolic":FBTN \
 	--field="Change the root password!system-users-symbolic":FBTN \
 	--field="":LBL \
-	--field="Miscellaneous options:":LBL \
+	--field="<b>Miscellaneous options:</b>":LBL \
 	--field="Randomize MAC addresses of network interfaces":CHK \
+	--field="Disable the permakey kernel module (do not shutdown when unplugging the USB medium)":CHK \
 	--button="Shutdown":1 \
-	--button="Start heads":0 \
+	--button="<b>Start heads</b>":0 \
 	"/usr/local/lib/heads/heads-keymap" \
 	"/usr/local/lib/heads/heads-locale" \
 	"/usr/local/lib/heads/heads-tz" \
 	"/usr/local/lib/heads/heads-rootpw" \
 	"n/a" \
 	"n/a" \
-	"TRUE")"
+	"TRUE" \
+	"FALSE")"
 
 # Shut down on unsuccessful exit.
 #[ $? = 0 ] || init 0
@@ -46,6 +53,7 @@ environment. Select any option below to proceed." \
 # 4: n/a
 # 5: n/a
 # 6: macaddr
+# 7: permakey
 i=-1
 echo "$data" | tr ':' '\n' | while read val; do
 	i=$(( $i + 1 ))
@@ -55,6 +63,10 @@ echo "$data" | tr ':' '\n' | while read val; do
 			cp -f /usr/local/share/heads/wicd-preconn \
 				/etc/wicd/scripts/preconnect/macchange
 			chmod 755 /etc/wicd/scripts/preconnect/macchange
+			;;
+		7)
+			[ "$val" = TRUE ] || continue
+			lsmod | grep -q permakey && rmmod permakey || true
 			;;
 		*)
 			continue
