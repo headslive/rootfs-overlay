@@ -26,6 +26,7 @@ case "$wm" in
 		;;
 esac
 
-#su -s /bin/sh -c startx your_user &
+# Needs allowed_users=anybody in Xwrapper.config
+grep -q ' nox' /proc/cmdline || su -c startx luther &
 
 exit 0
