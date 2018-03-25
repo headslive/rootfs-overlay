@@ -5,40 +5,21 @@
 #
 # a rude shutdown menu
 
-watdo="$(yad --list \
-	--title="Shutdown" \
+yad \
+	--title="Shutdown Menu" \
+	--text="<b>Shutdown Menu</b>
+" \
+	--text-align="center" \
 	--center \
-	--width=300 \
-	--height=180 \
-	--separator=" & " \
-	--print-column=1 \
-	--column="Action" --column="Description" \
-	"shutdown" "perform a system shutdown" \
-	"reboot"   "perform a system reboot" \
-	"suspend"  "suspend to ram")"
-
-watdo="$(echo $watdo | cut -d' ' -f1)"
-case "$watdo" in
-	shutdown)
-		yad \
-			--info \
-			--wrap \
-			--center \
-			--text="Will shut down after you click OK."
-		[ $? = 0 ] && exec sup heads-init shutdown
-		;;
-	reboot)
-		yad \
-			--info \
-			--wrap \
-			--center \
-			--text="Will shut down after you click OK."
-		[ $? = 0 ] && exec sup heads-init reboot
-		;;
-	suspend)
-		exec sudo /usr/sbin/pm-suspend
-		;;
-	*)
-		exit 0
-		;;
-esac
+	--fixed \
+	--form \
+	--width=380 \
+	--height=260 \
+	--borders=40 \
+	--field="Shut Down (Power off the system)!system-shutdown-symbolic":FBTN \
+	--field="Reboot (Restart the system)!view-refresh-symbolic":FBTN \
+	--field="Suspend (Suspend the system to RAM)!media-playback-pause-symbolic":FBTN \
+	--button="Cancel":1 \
+	"sup heads-init shutdown" \
+	"sup heads-init reboot" \
+	"sudo /usr/sbin/pm-suspend"
