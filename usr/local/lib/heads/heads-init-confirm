@@ -1,0 +1,27 @@
+#!/bin/sh
+
+case "$1" in
+	shutdown)
+		title="Confirm Shutdown"
+		;;
+	reboot)
+		title="Confirm Reboot"
+		;;
+	*)
+		exit 1
+		;;
+esac
+
+yad \
+	--title="$title" \
+	--center \
+	--fixed \
+	--text="heads will $1 when you click OK
+" \
+	--borders=40 \
+	--button="Cancel":1 \
+	--button="OK":0
+
+[ $? = 0 ] || exit 1
+
+sup heads-init $1

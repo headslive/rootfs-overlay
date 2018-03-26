@@ -20,6 +20,6 @@ yad \
 	--field="Reboot (Restart the system)!view-refresh-symbolic":FBTN \
 	--field="Suspend (Suspend the system to RAM)!media-playback-pause-symbolic":FBTN \
 	--button="Cancel":1 \
-	"sup heads-init shutdown" \
-	"sup heads-init reboot" \
+	"/usr/local/lib/heads/heads-init-confirm shutdown" \
+	"/usr/local/lib/heads/heads-init-confirm reboot" \
 	"sudo /usr/sbin/pm-suspend"
