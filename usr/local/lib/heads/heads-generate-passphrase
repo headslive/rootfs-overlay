@@ -6,9 +6,8 @@
 # this will generate a random passphrase for the root password
 # runs on boot through rc.local
 
-## XXX: will be reintroduced after testing phase (1.0)
-#pass="$(echo "$(shuf -n 2 /usr/share/dict/words --random-source=/dev/urandom | tr '\n' '-' | rev | cut -c 2- | rev)")"
-pass="toor"
+pass="$(echo "$(shuf -n 2 /usr/share/dict/words --random-source=/dev/urandom | tr '\n' '-' | rev | cut -c 2- | rev)")"
+#pass="toor"
 
 echo "root:${pass}" | chpasswd
 [ $? = 0 ] || return 1
