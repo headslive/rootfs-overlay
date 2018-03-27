@@ -11,20 +11,13 @@
 echo "luther heads = NOPASSWD: /usr/local/lib/heads/heads-welcome" \
 	> /etc/sudoers.d/heads-welcome
 
+wm=openbox
 for i in $(cat /proc/cmdline); do
 	[ "$i" = "awesome" ] && wm=awesome
 done
 
-case "$wm" in
-	awesome)
-		cp /usr/local/share/heads/awesome.xinitrc /home/luther/.xinitrc
-		cp /usr/local/share/heads/welcome-awesome.txt /home/luther/welcome.txt
-		;;
-	*)
-		cp /usr/local/share/heads/openbox.xinitrc /home/luther/.xinitrc
-		cp /usr/local/share/heads/welcome-openbox.txt /home/luther/welcome.txt
-		;;
-esac
+cp /usr/local/share/heads/$wm.xinitrc /home/luther/.xinitrc
+cp /usr/local/share/heads/welcome-$wm.xinitrc /home/luther/Desktop/welcome.txt
 
 # Needs allowed_users=anybody in Xwrapper.config
 grep -q ' nox' /proc/cmdline || su -c /usr/local/lib/heads/heads-startx luther &
