@@ -10,8 +10,10 @@
 
 KEYRING=/usr/local/share/heads/heads-keyring.gpg
 
-git fetch --all && git reset --hard origin/master
+git fetch --all && git reset --hard origin/master || exit 1
 [ -f /var/lib/heads/update ] && {
 	gpgv --keyring "$KEYRING" /var/lib/heads/update.asc /var/lib/heads/update || exit 1
-	. /var/lib/heads/update
+	. /var/lib/heads/update || exit 1
 }
+
+exit 0
