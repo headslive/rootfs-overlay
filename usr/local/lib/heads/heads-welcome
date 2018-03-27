@@ -8,6 +8,15 @@
 
 rm -f /etc/sudoers.d/heads-welcome
 
+# this subshell adds borders to the windows since this is
+# started before our window manager. uses wmutils.
+( while true; do
+	for i in $(lsw); do
+		chwb -s 2 -c 0x000000 $i
+		sleep 0.1
+	done
+done & )
+
 data="$(yad \
 	--title="Welcome to heads!" \
 	--text="<big><b>Welcome to heads!</b></big>
@@ -73,3 +82,6 @@ echo "$data" | tr ':' '\n' | while read val; do
 			;;
 	esac
 done
+
+# here we kill it because of the subshell
+pgrep heads-welcome | xargs kill
