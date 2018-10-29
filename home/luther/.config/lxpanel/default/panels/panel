@@ -14,10 +14,10 @@ Global {
   setdocktype=1
   setpartialstrut=1
   usefontcolor=1
-  fontcolor=#ffffff
+  fontcolor=#000000
   usefontsize=0
   fontsize=10
-  background=1
+  background=0
   backgroundfile=/usr/share/lxpanel/images/background.png
 }
 Plugin {
@@ -104,11 +104,6 @@ Plugin {
     FlatButton=0
     MaxTaskWidth=150
     spacing=1
-  }
-}
-Plugin {
-  type=cpu
-  Config {
   }
 }
 Plugin {
