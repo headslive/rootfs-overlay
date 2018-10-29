@@ -1,2 +1,2 @@
 [Command]
-Logout=heads-shutdown-menu
+Logout=/usr/local/bin/heads-shutdown-menu
