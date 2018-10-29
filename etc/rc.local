@@ -17,7 +17,7 @@ for i in $(cat /proc/cmdline); do
 done
 
 cp /usr/local/share/heads/$wm.xinitrc /home/luther/.xinitrc
-cp /usr/local/share/heads/welcome-$wm.xinitrc /home/luther/Desktop/welcome.txt
+cp /usr/local/share/heads/welcome-$wm.txt /home/luther/Desktop/Welcome.txt
 
 # Needs allowed_users=anybody in Xwrapper.config
 grep -q ' nox' /proc/cmdline || su -c /usr/local/lib/heads/heads-startx luther &
