@@ -1,0 +1,33 @@
+#!/bin/sh
+#
+# Copyright (c) 2018 Ivan J. <parazyd@dyne.org>
+# See LICENSE file for copyright and license details.
+#
+
+# Sometimes there's acpi_video0, sometimes not.
+brbase="/sys/class/backlight"
+brfile="$(ls -1 $brbase | tail -n1)"
+
+[ -n "$brfile" ] || exit 127
+[ -n "$1" ]      || exit 1
+
+cur="$(cat "$brbase/$brfile/brightness")"
+max="$(cat "$brbase/$brfile/max_brightness")"
+
+curpct="$(( 100 * $cur / $max ))"
+
+case "$1" in
+	inc*)
+		newpct="$(( $curpct + 10 ))"
+		[ "$newpct" -ge 100 ] && exit 0
+		;;
+
+	dec*)
+		newpct="$(( $curpct - 10 ))"
+		[ "$newpct" -le 0 ] && exit 0
+		;;
+esac
+
+new="$(( $max * $newpct / 100 ))"
+
+echo "$new" > "$brbase/$brfile/brightness"

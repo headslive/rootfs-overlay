@@ -22,6 +22,7 @@ data="$(yad \
 	--text="<big><b>Welcome to heads!</b></big>
 Here you can choose to customize your system before starting the graphical environment.
 Select any option below to proceed.
+(The defaults are: <b>US</b>, <b>en_US</b>, <b>UTC</b>)
 	" \
 	--form \
 	--columns=1 \
